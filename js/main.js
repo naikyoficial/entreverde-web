@@ -151,24 +151,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Problem section ── */
-  gsap.from('.problem-tag', {
-    y: 20, opacity: 0, duration: 0.8,
+  /* ── Problem / VS section ── */
+  gsap.from('.vs-intro', {
+    y: 40, opacity: 0, duration: 1,
+    ease: 'power3.out',
     scrollTrigger: { trigger: '.problem-section', start: 'top 78%' }
   });
-  gsap.from('.problem-heading, .problem-text', {
-    y: 50, opacity: 0, duration: 1, stagger: 0.15,
+  gsap.from('.vs-heads', {
+    y: 16, opacity: 0, duration: 0.7,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.problem-left', start: 'top 78%' }
+    scrollTrigger: { trigger: '.vs-compare', start: 'top 88%' }
   });
-  gsap.from('.problem-item', {
-    y: 40, opacity: 0, duration: 0.8, stagger: 0.12,
+  gsap.from('.vs-item', {
+    y: 24, opacity: 0, duration: 0.6, stagger: 0.07,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.problem-right', start: 'top 78%' }
-  });
-  gsap.from('.problem-solution', {
-    y: 20, opacity: 0, duration: 0.8,
-    scrollTrigger: { trigger: '.problem-solution', start: 'top 90%' }
+    scrollTrigger: { trigger: '.vs-compare', start: 'top 88%' }
   });
 
   /* ── Sustrato section ── */
