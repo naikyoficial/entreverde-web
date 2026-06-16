@@ -57,26 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
   });
 
-  /* ── Lenis Smooth Scroll ── */
-  let lenis;
-  if (typeof Lenis !== 'undefined') {
-    lenis = new Lenis({
-      lerp: 0.1,        // 0 = sin inercia, 1 = instantáneo — 0.1 es fluido pero responsivo
-      smoothWheel: true,
-      syncTouch: false  // toque nativo en mobile (más rápido)
-    });
-
-    // Solo GSAP ticker — sin RAF manual para evitar doble tick
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(time => lenis.raf(time * 1000));
-      gsap.ticker.lagSmoothing(0);
-    } else {
-      // Fallback si GSAP no cargó
-      function lenisRaf(time) { lenis.raf(time); requestAnimationFrame(lenisRaf); }
-      requestAnimationFrame(lenisRaf);
-    }
-  }
+  /* ── Scroll nativo (sin Lenis para máxima compatibilidad) ── */
+  let lenis = null;
 
   /* ── GSAP & ScrollTrigger ── */
   if (typeof gsap === 'undefined') return;
