@@ -773,12 +773,21 @@ em      { font-style: italic; }
   will-change: transform;
   transition: transform 0.6s var(--ease-out-expo);
 }
+.sustrato-video {
+  filter: brightness(0.88) contrast(1.08) saturate(0.9);
+}
 .sustrato-img-frame:hover .sustrato-img,
 .sustrato-img-frame:hover .sustrato-video { transform: scale(1.05); }
 .sustrato-fallback {
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at 40% 60%, #1e3010 0%, #0d1a08 50%, #0a1207 100%);
+}
+.sustrato-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 9, 6, 0.18);
+  pointer-events: none;
 }
 .sustrato-img-shine {
   position: absolute;
