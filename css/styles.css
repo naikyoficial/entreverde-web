@@ -821,42 +821,33 @@ em      { font-style: italic; }
 }
 .comp-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  align-items: end;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.comp-intro-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 .comp-heading {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(34px, 4vw, 58px);
   font-weight: 700;
   line-height: 1.05;
   color: var(--text);
   letter-spacing: -0.02em;
 }
+.comp-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--green);
+}
 .comp-text {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--text-2);
-  line-height: 1.75;
-}
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--green);
-  padding: 10px 20px;
-  border: 1px solid var(--border-2);
-  border-radius: 100px;
-  transition: background 0.3s, border-color 0.3s;
-  white-space: nowrap;
-  align-self: end;
-}
-.btn-ghost:hover {
-  background: var(--green-glow);
-  border-color: rgba(141, 191, 74, 0.3);
+  line-height: 1.8;
 }
 
 .comp-cards {
@@ -883,6 +874,14 @@ em      { font-style: italic; }
   aspect-ratio: 3/4;
   overflow: hidden;
 }
+.comp-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 9, 6, 0.65) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
 .comp-img-wrap img {
   position: absolute;
   inset: 0;
@@ -896,6 +895,19 @@ em      { font-style: italic; }
   position: absolute;
   inset: 0;
 }
+.comp-num {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(238, 242, 232, 0.55);
+  letter-spacing: 0.04em;
+  z-index: 2;
+  line-height: 1;
+}
 .cf-1 { background: linear-gradient(160deg, #5c3820 0%, #3a2010 60%, #271508 100%); }
 .cf-2 { background: linear-gradient(160deg, #8a7340 0%, #6b5630 60%, #4a3a20 100%); }
 .cf-3 { background: linear-gradient(160deg, #c9a227 0%, #a17e1a 60%, #6e5710 100%); }
@@ -905,20 +917,20 @@ em      { font-style: italic; }
 .cf-7 { background: linear-gradient(160deg, #2e2014 0%, #1c140c 60%, #100b06 100%); }
 .cf-8 { background: linear-gradient(160deg, #4a2e18 0%, #32200f 60%, #1e1308 100%); }
 .comp-info {
-  padding: 16px;
+  padding: 18px 16px 20px;
 }
 .comp-info h4 {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   color: var(--text);
-  margin-bottom: 4px;
-  line-height: 1.4;
+  margin-bottom: 6px;
+  line-height: 1.35;
 }
 .comp-info p {
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ══════════════════════════════════════
@@ -1505,7 +1517,7 @@ em      { font-style: italic; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
   .problem-items { grid-template-columns: 1fr; }
   .comp-layout { gap: 40px; }
-  .comp-intro { grid-template-columns: 1fr 1fr; }
+  .comp-intro { grid-template-columns: 1fr; gap: 24px; }
   .cta-grid { grid-template-columns: 1fr; }
 }
 
@@ -1520,7 +1532,7 @@ em      { font-style: italic; }
   .badge-sm { font-size: 6.5px; }
   .problem-card { padding: 32px 24px; }
   .comp-cards { grid-template-columns: repeat(2, 1fr); }
-  .comp-intro { grid-template-columns: 1fr; }
+  .comp-intro { grid-template-columns: 1fr; gap: 20px; }
   .plantas-grid { grid-template-columns: repeat(2, 1fr); }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: auto; }
