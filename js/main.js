@@ -277,19 +277,34 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Form submit ── */
   const form = document.getElementById('dist-form');
   if (form) {
-    form.addEventListener('submit', async e => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
       const btn = form.querySelector('.btn-submit');
-      const originalHtml = btn.innerHTML;
-      btn.innerHTML = '<span class="btn-text">Enviando...</span>';
+      btn.innerHTML = '<span class="btn-text">Abriendo WhatsApp...</span>';
       btn.disabled = true;
 
-      await new Promise(r => setTimeout(r, 1800));
+      const d = new FormData(form);
+      const get = k => (d.get(k) || '').trim();
+
+      const lines = [
+        '🌿 *Nueva solicitud de distribución — Entre Verde*',
+        '',
+        `*Nombre:* ${get('nombre')}`,
+        `*Email:* ${get('email')}`,
+        get('comercio') ? `*Comercio:* ${get('comercio')}` : null,
+        get('negocio') ? `*Tipo de negocio:* ${get('negocio')}` : null,
+        get('ciudad') ? `*Ciudad/Provincia:* ${get('ciudad')}` : null,
+        get('mensaje') ? `*Mensaje:* ${get('mensaje')}` : null,
+      ].filter(Boolean).join('\n');
+
+      const waUrl = `https://wa.me/5493436218007?text=${encodeURIComponent(lines)}`;
 
       form.style.display = 'none';
       const success = document.getElementById('form-success');
       success.classList.add('visible');
       gsap.from(success, { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
+
+      setTimeout(() => window.open(waUrl, '_blank'), 600);
     });
   }
 
