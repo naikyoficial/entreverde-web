@@ -5,7 +5,7 @@ Colocar las imágenes en esta carpeta con los siguientes nombres exactos:
 | Archivo | Sección | Descripción |
 |---|---|---|
 | `hero-bg.jpg` | Hero | Manos sosteniendo tierra con planta (foto principal) |
-| `problema-sustrato.jpg` | El Problema | Foto de fondo (tenue) — sustrato compactado o planta sufriendo, ambienta el "antes del producto" |
+| `problema-sustrato.png` | El Problema | Foto de fondo (tenue) — sustrato compactado o planta sufriendo, ambienta el "antes del producto" |
 | `sustrato-close.jpg` | El Sustrato | Close-up del sustrato / mezcla de tierra |
 | `corteza-pino.jpg` | Componentes | Corteza de pino |
 | `fibra-coco.jpg` | Componentes | Fibra de coco |
