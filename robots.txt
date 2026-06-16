@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naikyoficial.github.io/entreverde-web/sitemap.xml

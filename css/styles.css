@@ -267,6 +267,16 @@ em      { font-style: italic; }
   gap: 10px;
   flex-shrink: 0;
 }
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.footer-logo .logo-img {
+  width: 28px;
+  height: 28px;
+}
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -504,6 +514,25 @@ em      { font-style: italic; }
 @keyframes bounceArrow {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(4px); }
+}
+
+.btn-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--green);
+  color: #060906;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 100px;
+  margin-bottom: 44px;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-hero-cta:hover {
+  background: #a0d656;
+  transform: translateY(-2px);
 }
 
 /* Formula Badge */
@@ -1099,6 +1128,46 @@ em      { font-style: italic; }
 }
 .faq-item.open .faq-a { max-height: 300px; }
 
+/* ── CTA Strip intermedio ── */
+.cta-strip {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 0;
+}
+.cta-strip .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.cta-strip p {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+}
+.btn-strip-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: background 0.3s, border-color 0.3s;
+  flex-shrink: 0;
+}
+.btn-strip-cta:hover {
+  background: var(--green-glow);
+  border-color: rgba(141, 191, 74, 0.4);
+}
+
 /* ══════════════════════════════════════
    10 · CTA FINAL
 ══════════════════════════════════════ */
@@ -1444,7 +1513,8 @@ em      { font-style: italic; }
 
 @media (max-width: 900px) {
   :root { --section-gap: 90px; }
-  .nav-links, .btn-nav { display: none; }
+  .nav-links { display: none; }
+  .btn-nav { font-size: 12px; padding: 8px 14px; }
   .nav-burger { display: flex; }
   .sustrato-grid { grid-template-columns: 1fr; gap: 48px; }
   .sustrato-img-frame { aspect-ratio: 16/9; }
@@ -1459,6 +1529,8 @@ em      { font-style: italic; }
   :root { --section-gap: 70px; }
   .container { padding: 0 20px; }
   .hero-content { padding-top: 80px; padding-bottom: 60px; }
+  .cta-strip .container { flex-direction: column; text-align: center; gap: 20px; }
+  .cta-strip p { font-size: 15px; }
   .hero-icons { gap: 20px; }
   .formula-badge { bottom: 24px; right: 24px; width: 100px; height: 100px; }
   .badge-inner { width: 84px; height: 84px; }
