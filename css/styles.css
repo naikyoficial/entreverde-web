@@ -22,7 +22,7 @@
   --border:     #1c2519;
   --border-2:   rgba(141, 191, 74, 0.12);
 
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans:  'Space Grotesk', system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -119,27 +119,13 @@ em      { font-style: italic; }
   align-items: center;
   gap: 20px;
 }
-.loader-icon {
+.loader-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
   opacity: 0;
-  animation: fadeScale 0.8s var(--ease-out-expo) 0.2s forwards;
+  animation: fadeScale 0.9s var(--ease-out-expo) 0.2s forwards;
 }
-.loader-path {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawPath 1.2s var(--ease-out-expo) 0.3s forwards;
-}
-.loader-wordmark {
-  display: flex;
-  gap: 8px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  color: var(--text-2);
-  opacity: 0;
-  animation: fadeUp 0.6s var(--ease-out-expo) 0.7s forwards;
-}
-.loader-wordmark .green { color: var(--green); }
 .loader-bar {
   width: 120px;
   height: 1px;
@@ -452,11 +438,11 @@ em      { font-style: italic; }
 
 .hero-heading {
   font-family: var(--font-serif);
-  font-size: clamp(44px, 6vw, 80px);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
 }
 .h1-line {
   display: block;
@@ -514,25 +500,6 @@ em      { font-style: italic; }
 @keyframes bounceArrow {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(4px); }
-}
-
-.btn-hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: var(--green);
-  color: #060906;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  border-radius: 100px;
-  margin-bottom: 44px;
-  transition: background 0.25s, transform 0.2s;
-}
-.btn-hero-cta:hover {
-  background: #a0d656;
-  transform: translateY(-2px);
 }
 
 /* Formula Badge */

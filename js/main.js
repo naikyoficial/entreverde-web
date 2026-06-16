@@ -68,14 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function runHeroAnimations() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.to('.hero-eyebrow',      { y: 0, opacity: 1, duration: 1 }, 0)
-      .to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.15)
-      .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.28)
-      .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.44)
-      .to('.btn-hero-cta',       { y: 0, opacity: 1, duration: 0.8 }, 0.54)
-      .to('.hero-icons',         { y: 0, opacity: 1, duration: 0.8 }, 0.64)
-      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.7)
-      .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
+    tl.to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.1)
+      .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.24)
+      .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.4)
+      .to('.hero-icons',         { y: 0, opacity: 1, duration: 0.8 }, 0.54)
+      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.62)
+      .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.46);
   }
 
   /* ── Hero parallax ── */
