@@ -1263,9 +1263,12 @@ em      { font-style: italic; }
   aspect-ratio: 3/4;
 }
 .product-visual img {
-  border-radius: var(--r-lg);
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--r-lg);
 }
 .product-fallback {
   position: absolute;
