@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=5">
+  <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body class="is-loading">
 
@@ -91,11 +91,14 @@
        01 · HERO
   ══════════════════════════════════════ -->
   <section class="hero" id="hero">
-    <div class="hero-bg-solid"></div>
+    <div class="hero-media">
+      <div class="hero-fallback"></div>
+      <img src="images/hero-bg.png" alt="" class="hero-img" id="hero-img">
+      <div class="hero-overlay"></div>
+      <div class="hero-vignette"></div>
+    </div>
 
-    <div class="hero-layout container">
-
-    <div class="hero-content">
+    <div class="hero-content container">
       <p class="hero-eyebrow reveal-up">
         <span class="eyebrow-dot"></span>
         SUSTRATO PREMIUM
@@ -139,14 +142,6 @@
         Explorá más
       </a>
     </div>
-
-    <!-- Producto derecha -->
-    <div class="hero-visual">
-      <div class="hero-visual-glow"></div>
-      <img src="images/hero-bg.png" alt="Entre Verde Sustrato Premium" class="hero-img" id="hero-img">
-    </div>
-
-    </div><!-- /hero-layout -->
 
     <!-- Formula badge -->
     <div class="formula-badge reveal-scale">

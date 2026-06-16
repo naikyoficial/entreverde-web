@@ -398,62 +398,53 @@ em      { font-style: italic; }
   background: var(--bg);
 }
 
-.hero-bg-solid {
+.hero-media {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 60%, rgba(30, 55, 15, 0.55) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(20, 40, 10, 0.3) 0%, transparent 50%),
-    var(--bg);
 }
-
-.hero-layout {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  padding-top: 100px;
-  padding-bottom: 80px;
-  width: 100%;
+.hero-img {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  object-position: 65% center;
+  will-change: transform;
+}
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 65% 40%, #1a2e10 0%, #0b1508 40%, #060906 100%);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6, 9, 6, 0.97) 0%,
+    rgba(6, 9, 6, 0.92) 30%,
+    rgba(6, 9, 6, 0.65) 55%,
+    rgba(6, 9, 6, 0.15) 80%,
+    rgba(6, 9, 6, 0.05) 100%
+  );
+}
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(6,9,6,0.4) 0%,
+    transparent 20%,
+    transparent 75%,
+    rgba(6,9,6,0.7) 100%
+  );
 }
 
 .hero-content {
   position: relative;
-}
-
-/* Imagen producto — lado derecho */
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-visual-glow {
-  position: absolute;
-  width: 70%;
-  height: 70%;
-  background: radial-gradient(ellipse, rgba(141, 191, 74, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-  animation: heroGlow 4s ease-in-out infinite;
-}
-@keyframes heroGlow {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50%       { transform: scale(1.15); opacity: 1; }
-}
-.hero-img {
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(141,191,74,0.08));
-  animation: heroFloat 6s ease-in-out infinite;
-  will-change: transform;
-}
-@keyframes heroFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  z-index: 2;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  max-width: 580px;
 }
 
 .hero-eyebrow {
@@ -1665,9 +1656,6 @@ em      { font-style: italic; }
   :root { --section-gap: 90px; }
   .nav-links, .btn-nav { display: none; }
   .nav-burger { display: flex; }
-  .hero-layout { grid-template-columns: 1fr; padding-top: 100px; }
-  .hero-visual { order: -1; max-width: 320px; margin: 0 auto; }
-  .hero-img { max-width: 320px; }
   .sustrato-grid { grid-template-columns: 1fr; gap: 48px; }
   .sustrato-img-frame { aspect-ratio: 16/9; }
   .steps-layout { grid-template-columns: 1fr; gap: 40px; }

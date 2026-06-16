@@ -77,11 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
       .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
   }
 
-  /* ── Hero visual — entrada desde la derecha ── */
-  gsap.from('.hero-visual', {
-    x: 80, opacity: 0, duration: 1.3, delay: 0.6,
-    ease: 'power3.out'
-  });
+  /* ── Hero parallax ── */
+  const heroImg = document.getElementById('hero-img');
+  if (heroImg) {
+    gsap.to(heroImg, {
+      y: '18%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  }
 
   /* ── Nav on scroll ── */
   const nav = document.getElementById('nav');
