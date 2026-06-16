@@ -606,7 +606,30 @@ em      { font-style: italic; }
   pointer-events: none;
 }
 
+.problem-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.problem-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+.problem-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(13, 16, 9, 0.55) 0%,
+    rgba(13, 16, 9, 0.92) 55%,
+    var(--bg-card) 100%
+  );
+}
+
 .problem-tag {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -627,6 +650,8 @@ em      { font-style: italic; }
 }
 
 .problem-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
@@ -696,6 +721,8 @@ em      { font-style: italic; }
 }
 
 .problem-solution {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 12px;
