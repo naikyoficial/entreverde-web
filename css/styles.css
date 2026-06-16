@@ -404,11 +404,12 @@ em      { font-style: italic; }
 }
 .hero-img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
   object-fit: cover;
-  object-position: 78% center;
+  object-position: 88% center;
+  transform: scale(0.9);
   will-change: transform;
 }
 .hero-fallback {
