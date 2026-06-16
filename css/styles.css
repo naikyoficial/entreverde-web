@@ -922,185 +922,6 @@ em      { font-style: italic; }
 }
 
 /* ══════════════════════════════════════
-   05 · CÓMO FUNCIONA
-══════════════════════════════════════ */
-.steps-section {
-  padding: var(--section-gap) 0;
-}
-
-.steps-layout {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 80px;
-  align-items: center;
-}
-.steps-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.steps-text {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.75;
-}
-
-.steps-track {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-.step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  padding: 0 16px;
-}
-.step-icon-wrap {
-  width: 72px;
-  height: 72px;
-  border: 1px solid var(--border-2);
-  border-radius: 50%;
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-  position: relative;
-  z-index: 1;
-}
-.step-item:hover .step-icon-wrap {
-  background: var(--green-glow);
-  border-color: rgba(141, 191, 74, 0.4);
-  box-shadow: 0 0 30px var(--green-glow);
-}
-.step-num {
-  font-family: var(--font-serif);
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--text-3);
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
-}
-.step-item h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-.step-item p {
-  font-size: 12px;
-  color: var(--text-2);
-  line-height: 1.6;
-}
-.step-arrow {
-  position: absolute;
-  top: 34px;
-  right: -24px;
-  width: 48px;
-  z-index: 0;
-  opacity: 0.5;
-}
-.step-item:last-child .step-arrow { display: none; }
-
-/* ══════════════════════════════════════
-   06 · RESULTADOS
-══════════════════════════════════════ */
-.resultados-section {
-  position: relative;
-  padding: var(--section-gap) 0;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-}
-
-.resultados-media {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-.resultados-img {
-  position: absolute;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
-  object-fit: cover;
-  object-position: center;
-  will-change: transform;
-}
-.resultados-fallback {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, #182810 0%, #0d1a09 40%, #060906 100%);
-}
-.resultados-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(6, 9, 6, 0.95) 0%,
-    rgba(6, 9, 6, 0.8) 50%,
-    rgba(6, 9, 6, 0.4) 100%
-  );
-}
-
-.resultados-content {
-  position: relative;
-  z-index: 2;
-  max-width: 560px;
-}
-.resultados-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(30px, 4vw, 54px);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.resultados-sub {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.7;
-  margin-bottom: 40px;
-}
-
-.resultado-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.resultado-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-2);
-  padding: 14px;
-  background: rgba(13, 18, 9, 0.7);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  backdrop-filter: blur(8px);
-  transition: border-color 0.3s, color 0.3s;
-}
-.resultado-item:hover {
-  border-color: var(--border-2);
-  color: var(--text);
-}
-
-/* ══════════════════════════════════════
    07 · TIPOS DE PLANTAS
 ══════════════════════════════════════ */
 .plantas-section {
@@ -1664,9 +1485,6 @@ em      { font-style: italic; }
   .nav-burger { display: flex; }
   .sustrato-grid { grid-template-columns: 1fr; gap: 48px; }
   .sustrato-img-frame { aspect-ratio: 16/9; }
-  .steps-layout { grid-template-columns: 1fr; gap: 40px; }
-  .steps-track { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .step-arrow { display: none; }
   .compromiso-layout { grid-template-columns: 1fr; gap: 48px; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
   .problem-items { grid-template-columns: 1fr; }
@@ -1688,8 +1506,6 @@ em      { font-style: italic; }
   .comp-cards { grid-template-columns: repeat(2, 1fr); }
   .comp-intro { grid-template-columns: 1fr; }
   .plantas-grid { grid-template-columns: repeat(2, 1fr); }
-  .steps-track { grid-template-columns: 1fr; gap: 32px; }
-  .resultado-items { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: auto; }
   .cta-card { padding: 28px 20px; }

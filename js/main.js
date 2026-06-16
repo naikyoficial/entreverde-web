@@ -184,43 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: { trigger: '.comp-cards', start: 'top 80%' }
   });
 
-  /* ── Steps ── */
-  gsap.from('.steps-intro > *', {
-    y: 40, opacity: 0, duration: 0.9, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.steps-intro', start: 'top 80%' }
-  });
-  gsap.from('.step-item', {
-    y: 50, opacity: 0, duration: 0.9, stagger: 0.15,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.steps-track', start: 'top 80%' }
-  });
-
-  /* ── Resultados parallax ── */
-  const resImg = document.getElementById('resultados-img');
-  if (resImg) {
-    gsap.to(resImg, {
-      y: '18%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.resultados-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-  }
-  gsap.from('.resultados-heading, .resultados-sub', {
-    y: 50, opacity: 0, duration: 1, stagger: 0.15,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.resultados-content', start: 'top 75%' }
-  });
-  gsap.from('.resultado-item', {
-    y: 40, opacity: 0, duration: 0.8, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.resultado-items', start: 'top 80%' }
-  });
-
   /* ── Plantas ── */
   gsap.from('.plantas-heading', {
     y: 40, opacity: 0, duration: 1,
