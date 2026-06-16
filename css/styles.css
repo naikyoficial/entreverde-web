@@ -440,29 +440,6 @@ em      { font-style: italic; }
   max-width: 700px;
 }
 
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--green);
-  margin-bottom: 28px;
-}
-.eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--green);
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulseDot 2s ease infinite;
-}
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(141, 191, 74, 0.5); }
-  50%       { box-shadow: 0 0 0 6px rgba(141, 191, 74, 0); }
-}
-
 .hero-heading {
   font-family: var(--font-serif);
   font-size: clamp(44px, 6vw, 80px);
@@ -624,28 +601,6 @@ em      { font-style: italic; }
   position: absolute;
   inset: 0;
   background: rgba(13, 16, 9, 0.72);
-}
-
-.problem-tag {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--text-3);
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: 48px;
-}
-.tag-dot {
-  width: 5px; height: 5px;
-  background: var(--green-dark);
-  border-radius: 50%;
 }
 
 .problem-grid {
@@ -906,7 +861,7 @@ em      { font-style: italic; }
 
 .comp-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 .comp-card {
@@ -939,10 +894,13 @@ em      { font-style: italic; }
   inset: 0;
 }
 .cf-1 { background: linear-gradient(160deg, #5c3820 0%, #3a2010 60%, #271508 100%); }
-.cf-2 { background: linear-gradient(160deg, #9c7a1a 0%, #7a5c0e 60%, #5c4208 100%); }
-.cf-3 { background: linear-gradient(160deg, #1e1e1e 0%, #141414 60%, #0a0a0a 100%); }
+.cf-2 { background: linear-gradient(160deg, #8a7340 0%, #6b5630 60%, #4a3a20 100%); }
+.cf-3 { background: linear-gradient(160deg, #c9a227 0%, #a17e1a 60%, #6e5710 100%); }
 .cf-4 { background: linear-gradient(160deg, #c8c8c8 0%, #a0a0a0 60%, #808080 100%); }
-.cf-5 { background: linear-gradient(160deg, #8c8480 0%, #6e6662 60%, #504845 100%); }
+.cf-5 { background: linear-gradient(160deg, #1e1e1e 0%, #141414 60%, #0a0a0a 100%); }
+.cf-6 { background: linear-gradient(160deg, #8c8480 0%, #6e6662 60%, #504845 100%); }
+.cf-7 { background: linear-gradient(160deg, #2e2014 0%, #1c140c 60%, #100b06 100%); }
+.cf-8 { background: linear-gradient(160deg, #4a2e18 0%, #32200f 60%, #1e1308 100%); }
 .comp-info {
   padding: 16px;
 }
@@ -1164,7 +1122,16 @@ em      { font-style: italic; }
   color: var(--text);
   letter-spacing: -0.02em;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 20px;
+}
+.plantas-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
 }
 
 .plantas-grid {
@@ -1679,7 +1646,7 @@ em      { font-style: italic; }
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1100px) {
-  .comp-cards { grid-template-columns: repeat(3, 1fr); }
+  .comp-cards { grid-template-columns: repeat(2, 1fr); }
   .plantas-grid { grid-template-columns: repeat(3, 1fr); }
   .cta-grid { grid-template-columns: 1fr 1fr; }
   .cta-right { display: none; }
