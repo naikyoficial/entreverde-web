@@ -1400,6 +1400,14 @@ em      { font-style: italic; }
   color: var(--text-3);
   letter-spacing: 0.06em;
 }
+.footer-loc {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+}
 .footer-copy {
   font-size: 11px;
   color: var(--text-3);
