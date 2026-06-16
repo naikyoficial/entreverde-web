@@ -284,15 +284,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const d = new FormData(form);
       const get = k => (d.get(k) || '').trim();
 
+      const nombre   = get('nombre');
+      const email    = get('email');
+      const comercio = get('comercio');
+      const negocio  = get('negocio');
+      const ciudad   = get('ciudad');
+      const mensaje  = get('mensaje');
+
+      const negocioLine = [comercio, negocio].filter(Boolean).join(' · ');
+
       const lines = [
-        '🌿 *Nueva solicitud de distribución — Entre Verde*',
+        `🌿 *Nueva consulta — Aroid Mix Premium*`,
         '',
-        `*Nombre:* ${get('nombre')}`,
-        `*Email:* ${get('email')}`,
-        get('comercio') ? `*Comercio:* ${get('comercio')}` : null,
-        get('negocio') ? `*Tipo de negocio:* ${get('negocio')}` : null,
-        get('ciudad') ? `*Ciudad/Provincia:* ${get('ciudad')}` : null,
-        get('mensaje') ? `*Mensaje:* ${get('mensaje')}` : null,
+        `*${nombre}* quiere llevar el sustrato a su negocio.`,
+        '',
+        negocioLine ? `🏪 ${negocioLine}` : null,
+        ciudad      ? `📍 ${ciudad}`      : null,
+        `📧 ${email}`,
+        mensaje     ? ''                  : null,
+        mensaje     ? `💬 _"${mensaje}"_` : null,
       ].filter(Boolean).join('\n');
 
       const waUrl = `https://wa.me/5493436218007?text=${encodeURIComponent(lines)}`;
