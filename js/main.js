@@ -299,12 +299,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const waUrl = `https://wa.me/5493436218007?text=${encodeURIComponent(lines)}`;
 
+      /* Abrir WA sincrónicamente dentro del evento — evita que el navegador
+         lo bloquee como popup (setTimeout lo rompía) */
+      const link = document.createElement('a');
+      link.href = waUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
       form.style.display = 'none';
       const success = document.getElementById('form-success');
       success.classList.add('visible');
       gsap.from(success, { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
-
-      setTimeout(() => window.open(waUrl, '_blank'), 600);
     });
   }
 
