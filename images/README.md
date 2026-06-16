@@ -20,7 +20,7 @@ Colocar las imágenes en esta carpeta con los siguientes nombres exactos:
 | `alocasia.png` | Tipos de plantas | Alocasia |
 | `anthurium.png` | Tipos de plantas | Anthurium |
 | `syngonium.png` | Tipos de plantas | Syngonium |
-| `bolsa-producto.jpg` | CTA Final | Bolsa del producto Aroid Mix Premium (Entre Verde) 20L |
+| `bolsa-producto.png` | CTA Final | Bolsa del producto Aroid Mix Premium (Entre Verde) 20L |
 
 **Formato recomendado:** JPG o WebP — resolución mínima 1200×900px para fondos, 600×800px para tarjetas.
 
