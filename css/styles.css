@@ -613,20 +613,17 @@ em      { font-style: italic; }
 }
 .problem-bg-img {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 60%;
-  height: auto;
-  opacity: 0.55;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0.35;
 }
 .problem-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top,
-    transparent 0%,
-    rgba(13, 16, 9, 0.55) 45%,
-    var(--bg-card) 82%
-  );
+  background: rgba(13, 16, 9, 0.78);
 }
 
 .problem-tag {
