@@ -404,39 +404,40 @@ em      { font-style: italic; }
 }
 .hero-img {
   position: absolute;
-  inset: -6%;
-  width: 112%;
-  height: 112%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 62%;
+  height: 100%;
   object-fit: cover;
-  object-position: 88% center;
-  transform: scale(0.9);
+  object-position: center center;
   will-change: transform;
 }
 .hero-fallback {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 65% 40%, #1a2e10 0%, #0b1508 40%, #060906 100%);
+  background: radial-gradient(ellipse at 20% 50%, #121f0e 0%, #060906 60%);
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(6, 9, 6, 0.97) 0%,
-    rgba(6, 9, 6, 0.92) 30%,
-    rgba(6, 9, 6, 0.65) 55%,
-    rgba(6, 9, 6, 0.15) 80%,
-    rgba(6, 9, 6, 0.05) 100%
+    rgba(6, 9, 6, 1)    0%,
+    rgba(6, 9, 6, 1)    28%,
+    rgba(6, 9, 6, 0.85) 42%,
+    rgba(6, 9, 6, 0.3)  60%,
+    rgba(6, 9, 6, 0)    75%
   );
 }
 .hero-vignette {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-    rgba(6,9,6,0.4) 0%,
-    transparent 20%,
-    transparent 75%,
-    rgba(6,9,6,0.7) 100%
+    rgba(6,9,6,0.5) 0%,
+    transparent 18%,
+    transparent 72%,
+    rgba(6,9,6,0.8) 100%
   );
 }
 
