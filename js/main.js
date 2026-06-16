@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loader.classList.add('done');
       document.body.classList.remove('is-loading');
       runHeroAnimations();
-    }, 2100);
+    }, 900);
   });
 
   /* ── Custom Cursor ── */
@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.15)
       .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.28)
       .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.44)
-      .to('.hero-icons',         { y: 0, opacity: 1, duration: 0.8 }, 0.58)
+      .to('.btn-hero-cta',       { y: 0, opacity: 1, duration: 0.8 }, 0.54)
+      .to('.hero-icons',         { y: 0, opacity: 1, duration: 0.8 }, 0.64)
       .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.7)
       .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
   }
