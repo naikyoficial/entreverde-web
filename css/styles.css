@@ -617,15 +617,15 @@ em      { font-style: italic; }
   bottom: 0;
   width: 60%;
   height: auto;
-  opacity: 0.4;
+  opacity: 0.55;
 }
 .problem-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(13, 16, 9, 0.55) 0%,
-    rgba(13, 16, 9, 0.92) 55%,
-    var(--bg-card) 100%
+  background: linear-gradient(to top,
+    transparent 0%,
+    rgba(13, 16, 9, 0.55) 45%,
+    var(--bg-card) 82%
   );
 }
 
