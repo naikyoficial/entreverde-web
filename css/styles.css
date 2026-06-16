@@ -586,7 +586,7 @@ em      { font-style: italic; }
 .problem-bg-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 8, 0.80);
+  background: rgba(4, 4, 4, 0.82);
 }
 
 /* VS wrapper */
