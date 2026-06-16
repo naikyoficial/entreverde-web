@@ -410,7 +410,7 @@ em      { font-style: italic; }
   width: 62%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: 90% center;
   will-change: transform;
 }
 .hero-fallback {
