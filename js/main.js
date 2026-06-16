@@ -208,18 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: { trigger: '.plantas-grid', start: 'top 80%' }
   });
 
-  /* ── Compromiso ── */
-  gsap.from('.compromiso-left > *', {
-    y: 40, opacity: 0, duration: 0.9, stagger: 0.12,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.compromiso-section', start: 'top 80%' }
-  });
-  gsap.from('.comp-pillar', {
-    y: 40, opacity: 0, scale: 0.95, duration: 0.8, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.compromiso-right', start: 'top 80%' }
-  });
-
   /* ── FAQ ── */
   gsap.from('.faq-heading', {
     y: 40, opacity: 0, duration: 1,

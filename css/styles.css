@@ -1023,74 +1023,6 @@ em      { font-style: italic; }
   padding: 0 16px 16px;
   line-height: 1.5;
 }
-
-/* ══════════════════════════════════════
-   08 · COMPROMISO
-══════════════════════════════════════ */
-.compromiso-section {
-  padding: var(--section-gap) 0;
-  position: relative;
-}
-
-.compromiso-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.compromiso-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.compromiso-text {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.75;
-}
-
-.compromiso-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.comp-pillar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  transition: border-color 0.3s, transform 0.3s;
-}
-.comp-pillar:hover {
-  border-color: var(--border-2);
-  transform: translateY(-4px);
-}
-.pillar-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--green-glow-sm);
-  border: 1px solid var(--border-2);
-  border-radius: var(--r-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.comp-pillar span {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.5;
-}
-
 /* ══════════════════════════════════════
    09 · FAQ
 ══════════════════════════════════════ */
@@ -1516,7 +1448,6 @@ em      { font-style: italic; }
   .nav-burger { display: flex; }
   .sustrato-grid { grid-template-columns: 1fr; gap: 48px; }
   .sustrato-img-frame { aspect-ratio: 16/9; }
-  .compromiso-layout { grid-template-columns: 1fr; gap: 48px; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
   .problem-items { grid-template-columns: 1fr; }
   .comp-layout { gap: 40px; }
@@ -1540,7 +1471,6 @@ em      { font-style: italic; }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: auto; }
   .cta-card { padding: 28px 20px; }
-  .compromiso-right { grid-template-columns: 1fr 1fr; }
   .br-desk { display: none; }
   .faq-q { padding: 20px 24px; }
   .faq-q span { font-size: 14px; }
