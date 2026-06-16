@@ -99,8 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
     onToggle: self => nav.classList.toggle('scrolled', self.isActive)
   });
 
+  /* ── Open form on "Quiero distribuir" CTA ── */
+  const formWrap = document.getElementById('form');
+  document.querySelectorAll('.btn-cta').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      formWrap.classList.add('open');
+      setTimeout(() => formWrap.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      closeMobileMenu();
+    });
+  });
+
   /* ── Smooth scroll anchors ── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
+    if (a.classList.contains('btn-cta')) return;
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
       if (!target) return;
