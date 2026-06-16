@@ -15,10 +15,14 @@
   --green-dark: #3d5a22;
   --green-glow: rgba(141, 191, 74, 0.15);
   --green-glow-sm: rgba(141, 191, 74, 0.08);
+  --gold:       #c9a227;
+  --gold-dim:   #a07e1a;
+  --gold-glow:  rgba(201, 162, 39, 0.15);
+  --gold-glow-sm: rgba(201, 162, 39, 0.08);
   --red:        #ef4444;
-  --text:       #eef2e8;
-  --text-2:     #8da07a;
-  --text-3:     #556048;
+  --text:       #f2e8d2;
+  --text-2:     #9e9270;
+  --text-3:     #6a5c46;
   --border:     #1c2519;
   --border-2:   rgba(141, 191, 74, 0.12);
 
@@ -85,14 +89,14 @@ em      { font-style: italic; }
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: var(--green);
+  color: var(--gold);
   margin-bottom: 20px;
 }
 .label-bar {
   display: block;
   width: 28px;
   height: 1px;
-  background: var(--green);
+  background: var(--gold);
   flex-shrink: 0;
 }
 
@@ -532,7 +536,7 @@ em      { font-style: italic; }
   border-radius: 50%;
   width: 110px;
   height: 110px;
-  border: 1px solid var(--border-2);
+  border: 1px solid rgba(201, 162, 39, 0.3);
 }
 .badge-sm {
   font-size: 7.5px;
@@ -545,7 +549,7 @@ em      { font-style: italic; }
   font-family: var(--font-serif);
   font-size: 26px;
   font-weight: 700;
-  color: var(--green);
+  color: var(--gold);
   line-height: 1;
   margin: 1px 0;
 }
@@ -756,7 +760,7 @@ em      { font-style: italic; }
   margin-bottom: 20px;
 }
 .sustrato-heading em {
-  color: var(--green);
+  color: var(--gold);
   display: block;
 }
 .sustrato-text {
@@ -837,7 +841,7 @@ em      { font-style: italic; }
 .comp-heading em {
   font-style: italic;
   font-weight: 400;
-  color: var(--green);
+  color: var(--gold);
 }
 .comp-text {
   font-size: 15px;
@@ -899,7 +903,7 @@ em      { font-style: italic; }
   font-size: 11px;
   font-weight: 400;
   font-style: italic;
-  color: rgba(238, 242, 232, 0.55);
+  color: rgba(201, 162, 39, 0.65);
   letter-spacing: 0.04em;
   z-index: 2;
   line-height: 1;
