@@ -33,18 +33,18 @@
   --r-lg:  24px;
   --r-xl:  32px;
 
-  --container: 1200px;
-  --section-gap: 100px;
+  --container: 1240px;
+  --section-gap: 130px;
 }
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; zoom: 0.85; }
+html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -481,7 +481,7 @@ em      { font-style: italic; }
 
 .hero-heading {
   font-family: var(--font-serif);
-  font-size: clamp(36px, 4.8vw, 66px);
+  font-size: clamp(44px, 6vw, 80px);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -497,7 +497,7 @@ em      { font-style: italic; }
 }
 
 .hero-sub {
-  font-size: clamp(13px, 1.2vw, 16px);
+  font-size: clamp(15px, 1.5vw, 18px);
   font-weight: 300;
   color: var(--text-2);
   margin-bottom: 48px;
@@ -651,7 +651,7 @@ em      { font-style: italic; }
 
 .problem-heading {
   font-family: var(--font-serif);
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: clamp(26px, 2.8vw, 36px);
   font-weight: 600;
   line-height: 1.2;
   color: var(--text);
@@ -774,7 +774,7 @@ em      { font-style: italic; }
 
 .sustrato-heading {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 2.4vw, 36px);
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 600;
   line-height: 1.2;
   color: var(--text);
@@ -848,7 +848,7 @@ em      { font-style: italic; }
 }
 .comp-heading {
   font-family: var(--font-serif);
-  font-size: clamp(26px, 3vw, 44px);
+  font-size: clamp(32px, 4vw, 56px);
   font-weight: 700;
   line-height: 1.05;
   color: var(--text);
@@ -1076,7 +1076,7 @@ em      { font-style: italic; }
 }
 .resultados-heading {
   font-family: var(--font-serif);
-  font-size: clamp(26px, 3vw, 44px);
+  font-size: clamp(30px, 4vw, 54px);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text);
@@ -1134,7 +1134,7 @@ em      { font-style: italic; }
 
 .plantas-heading {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 3vw, 44px);
+  font-size: clamp(28px, 4vw, 52px);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text);
@@ -1210,7 +1210,7 @@ em      { font-style: italic; }
 }
 .compromiso-heading {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 2.8vw, 40px);
+  font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text);
@@ -1274,7 +1274,7 @@ em      { font-style: italic; }
 }
 .faq-heading {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 3vw, 44px);
+  font-size: clamp(30px, 4vw, 52px);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text);
@@ -1365,7 +1365,7 @@ em      { font-style: italic; }
 
 .cta-heading {
   font-family: var(--font-serif);
-  font-size: clamp(24px, 2.8vw, 40px);
+  font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
