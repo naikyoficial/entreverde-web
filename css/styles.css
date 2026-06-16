@@ -614,8 +614,8 @@ em      { font-style: italic; }
 .problem-bg-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 12% 85%;
+  object-fit: contain;
+  object-position: 25% center;
   opacity: 0.4;
 }
 .problem-bg-overlay {
