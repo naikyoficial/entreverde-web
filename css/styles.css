@@ -1440,7 +1440,7 @@ em      { font-style: italic; }
 @media (max-width: 680px) {
   :root { --section-gap: 60px; }
   .container { padding: 0 18px; }
-  .hero-img { object-position: center 100%; }
+  .hero-img { object-position: 75% center; }
 
   /* Hero */
   .hero-content { padding-top: 80px; padding-bottom: 56px; }
