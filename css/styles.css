@@ -596,15 +596,15 @@ em      { font-style: italic; }
   border-radius: var(--r-sm) var(--r-sm) 0 0;
 }
 .vs-head.bad {
-  color: rgba(239, 68, 68, 0.7);
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.12);
+  color: rgba(239, 68, 68, 0.9);
+  background: rgba(35, 8, 8, 0.95);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   border-bottom: none;
 }
 .vs-head.good {
   color: var(--green);
-  background: rgba(94, 130, 40, 0.07);
-  border: 1px solid rgba(94, 130, 40, 0.2);
+  background: rgba(10, 24, 5, 0.95);
+  border: 1px solid rgba(94, 130, 40, 0.3);
   border-bottom: none;
   border-left: none;
 }
@@ -627,12 +627,12 @@ em      { font-style: italic; }
 }
 .vs-item:nth-last-child(-n+2) { border-bottom: none; }
 .vs-item.bad {
-  background: rgba(6, 9, 6, 0.5);
-  border-right: 1px solid var(--border);
+  background: rgba(30, 6, 6, 0.92);
+  border-right: 1px solid rgba(239, 68, 68, 0.15);
 }
-.vs-item.good { background: rgba(94, 130, 40, 0.04); }
-.vs-item.bad:hover  { background: rgba(239, 68, 68, 0.05); }
-.vs-item.good:hover { background: rgba(94, 130, 40, 0.09); }
+.vs-item.good { background: rgba(8, 20, 4, 0.92); }
+.vs-item.bad:hover  { background: rgba(45, 10, 10, 0.95); }
+.vs-item.good:hover { background: rgba(12, 28, 6, 0.95); }
 
 .vs-icon {
   width: 24px;
@@ -659,7 +659,7 @@ em      { font-style: italic; }
   margin-bottom: 4px;
   line-height: 1.3;
 }
-.vs-item.bad .vs-title { color: rgba(242, 232, 210, 0.65); }
+.vs-item.bad .vs-title { color: rgba(242, 232, 210, 0.8); }
 .vs-desc {
   font-size: 12px;
   color: var(--text-2);
