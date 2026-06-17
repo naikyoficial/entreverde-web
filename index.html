@@ -146,7 +146,7 @@
   <section class="hero" id="hero">
     <div class="hero-media">
       <div class="hero-fallback"></div>
-      <img src="images/hero-bg.png?v=2" alt="" class="hero-img" id="hero-img">
+      <img src="images/hero-bg.png?v=2" alt="" class="hero-img" id="hero-img" fetchpriority="high" decoding="async">
       <div class="hero-overlay"></div>
       <div class="hero-vignette"></div>
     </div>
@@ -212,7 +212,7 @@
     <div class="container">
       <div class="problem-card">
         <div class="problem-bg">
-          <img src="images/problema-sustrato.png" alt="" class="problem-bg-img" onerror="this.style.display='none'">
+          <img src="images/problema-sustrato.png" alt="" class="problem-bg-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
           <div class="problem-bg-overlay"></div>
         </div>
 
@@ -287,7 +287,7 @@
         <div class="sustrato-media">
           <div class="sustrato-img-frame">
             <div class="sustrato-fallback"></div>
-            <video class="sustrato-video" autoplay muted loop playsinline poster="images/sustrato-close.jpg">
+            <video class="sustrato-video" autoplay muted loop playsinline preload="none" poster="images/sustrato-close.jpg">
               <source src="videos/sustrato.mp4" type="video/mp4">
             </video>
             <div class="sustrato-video-overlay"></div>
@@ -346,7 +346,7 @@
         <div class="planta-card">
           <div class="planta-img-wrap">
             <div class="planta-fallback pf-1"></div>
-            <img src="images/philodendron.png" alt="Philodendron" onerror="this.style.display='none'">
+            <img src="images/philodendron.png" alt="Philodendron" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <h4>Philodendron</h4>
           <p>Trepadoras que agradecen aireación y drenaje rápido.</p>
@@ -354,7 +354,7 @@
         <div class="planta-card">
           <div class="planta-img-wrap">
             <div class="planta-fallback pf-2"></div>
-            <img src="images/monstera.png" alt="Monstera" onerror="this.style.display='none'">
+            <img src="images/monstera.png" alt="Monstera" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <h4>Monstera</h4>
           <p>Raíces gruesas que necesitan oxígeno constante.</p>
@@ -362,7 +362,7 @@
         <div class="planta-card">
           <div class="planta-img-wrap">
             <div class="planta-fallback pf-3"></div>
-            <img src="images/alocasia.png" alt="Alocasia" onerror="this.style.display='none'">
+            <img src="images/alocasia.png" alt="Alocasia" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <h4>Alocasia</h4>
           <p>Exigente con la humedad, sin encharcar.</p>
@@ -370,7 +370,7 @@
         <div class="planta-card">
           <div class="planta-img-wrap">
             <div class="planta-fallback pf-4"></div>
-            <img src="images/anthurium.png" alt="Anthurium" onerror="this.style.display='none'">
+            <img src="images/anthurium.png" alt="Anthurium" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <h4>Anthurium</h4>
           <p>Raíces sensibles al exceso de riego.</p>
@@ -378,7 +378,7 @@
         <div class="planta-card">
           <div class="planta-img-wrap">
             <div class="planta-fallback pf-5"></div>
-            <img src="images/syngonium.png" alt="Syngonium" onerror="this.style.display='none'">
+            <img src="images/syngonium.png" alt="Syngonium" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <h4>Syngonium</h4>
           <p>Crecimiento rápido con nutrientes equilibrados.</p>
@@ -411,7 +411,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-1"></div>
-              <img src="images/corteza-pino.png" alt="Corteza de Pino" onerror="this.style.display='none'">
+              <img src="images/corteza-pino.png" alt="Corteza de Pino" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">01</span>
             </div>
             <div class="comp-info">
@@ -422,7 +422,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-2"></div>
-              <img src="images/musgo-sphagnum.png" alt="Musgo Sphagnum" onerror="this.style.display='none'">
+              <img src="images/musgo-sphagnum.png" alt="Musgo Sphagnum" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">02</span>
             </div>
             <div class="comp-info">
@@ -433,7 +433,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-3"></div>
-              <img src="images/vermiculita.png" alt="Vermiculita" onerror="this.style.display='none'">
+              <img src="images/vermiculita.png" alt="Vermiculita" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">03</span>
             </div>
             <div class="comp-info">
@@ -444,7 +444,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-4"></div>
-              <img src="images/perlita.png" alt="Perlita" onerror="this.style.display='none'">
+              <img src="images/perlita.png" alt="Perlita" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">04</span>
             </div>
             <div class="comp-info">
@@ -455,7 +455,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-5"></div>
-              <img src="images/carbon-vegetal.png" alt="Carbón Vegetal" onerror="this.style.display='none'">
+              <img src="images/carbon-vegetal.png" alt="Carbón Vegetal" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">05</span>
             </div>
             <div class="comp-info">
@@ -466,7 +466,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-6"></div>
-              <img src="images/piedra-pomez.png" alt="Piedra Pómez" onerror="this.style.display='none'">
+              <img src="images/piedra-pomez.png" alt="Piedra Pómez" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">06</span>
             </div>
             <div class="comp-info">
@@ -477,7 +477,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-7"></div>
-              <img src="images/humus-lombriz.png" alt="Humus de Lombriz" onerror="this.style.display='none'">
+              <img src="images/humus-lombriz.png" alt="Humus de Lombriz" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">07</span>
             </div>
             <div class="comp-info">
@@ -488,7 +488,7 @@
           <div class="comp-card" data-tilt>
             <div class="comp-img-wrap">
               <div class="comp-fallback cf-8"></div>
-              <img src="images/turba-seleccionada.png" alt="Turba Seleccionada" onerror="this.style.display='none'">
+              <img src="images/turba-seleccionada.png" alt="Turba Seleccionada" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <span class="comp-num">08</span>
             </div>
             <div class="comp-info">
@@ -602,7 +602,7 @@
                 <em>20L</em>
               </div>
             </div>
-            <img src="images/bolsa-producto.png" alt="Aroid Mix Premium de Entre Verde — Sustrato para Aráceas 20L" onerror="this.style.display='none'">
+            <img src="images/bolsa-producto.png" alt="Aroid Mix Premium de Entre Verde — Sustrato para Aráceas 20L" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
         </div>
       </div>
