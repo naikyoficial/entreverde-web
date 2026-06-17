@@ -159,23 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Problem / VS section ── */
-  gsap.from('.vs-intro', {
-    y: 40, opacity: 0, duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.problem-section', start: 'top 78%' }
-  });
-  gsap.from('.vs-heads', {
-    y: 16, opacity: 0, duration: 0.7,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.vs-compare', start: 'top 88%' }
-  });
-  gsap.from('.vs-item', {
-    y: 24, opacity: 0, duration: 0.6, stagger: 0.07,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.vs-compare', start: 'top 88%' }
-  });
-
   /* ── Sustrato section ── */
   gsap.from('.sustrato-img-frame', {
     x: -80, opacity: 0, duration: 1.2,
