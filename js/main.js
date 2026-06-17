@@ -5,6 +5,15 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ── Lazy image fade-in ── */
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    if (img.complete) {
+      img.style.opacity = 1;
+    } else {
+      img.addEventListener('load', () => img.style.opacity = 1);
+    }
+  });
+
   /* ── Grain texture ── */
   const grain = document.querySelector('.grain');
   if (grain) {
