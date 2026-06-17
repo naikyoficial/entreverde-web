@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loader.classList.add('done');
       document.body.classList.remove('is-loading');
       runHeroAnimations();
-    }, 900);
+    }, 300);
   });
 
   /* ── Custom Cursor ── */
