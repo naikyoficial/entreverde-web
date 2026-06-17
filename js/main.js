@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
   animateRing();
 
   document.querySelectorAll('a, button, [data-tilt], .comp-card, .planta-card').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
   });
 
   /* ── Scroll nativo (sin Lenis para máxima compatibilidad) ── */
@@ -71,8 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tl.to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.1)
       .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.24)
       .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.4)
-      .to('.hero-icons',         { y: 0, opacity: 1, duration: 0.8 }, 0.54)
-      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.62)
+      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.54)
       .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.46);
   }
 
