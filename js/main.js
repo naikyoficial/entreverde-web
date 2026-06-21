@@ -65,19 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Video loop crossfade ── */
+  /* ── Video loop crossfade (freeze-frame overlay) ── */
   const video = document.querySelector('.sustrato-video');
   if (video) {
+    const freeze = document.createElement('div');
+    freeze.style.cssText = 'position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 0.5s ease;pointer-events:none;z-index:2;';
+    video.parentNode.appendChild(freeze);
+
     let loopFading = false;
     video.addEventListener('timeupdate', () => {
-      if (!video.duration) return;
+      if (!video.duration || !video.videoWidth) return;
       const remaining = video.duration - video.currentTime;
-      if (remaining < 1 && !loopFading) {
+
+      if (remaining < 0.8 && !loopFading) {
         loopFading = true;
-        video.classList.add('loop-fade');
-      } else if (video.currentTime < 0.3 && loopFading) {
+        const c = document.createElement('canvas');
+        c.width = video.videoWidth;
+        c.height = video.videoHeight;
+        c.getContext('2d').drawImage(video, 0, 0);
+        freeze.style.backgroundImage = `url(${c.toDataURL('image/jpeg', 0.85)})`;
+        freeze.style.opacity = '1';
+      } else if (video.currentTime < 0.5 && loopFading) {
         loopFading = false;
-        video.classList.remove('loop-fade');
+        setTimeout(() => { freeze.style.opacity = '0'; }, 300);
       }
     });
   }
