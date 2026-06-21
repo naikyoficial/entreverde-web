@@ -65,10 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Video: disable autoplay on mobile ── */
-  if (isTouch) {
-    const video = document.querySelector('.sustrato-video');
-    if (video) video.removeAttribute('autoplay');
+  /* ── Video loop crossfade ── */
+  const video = document.querySelector('.sustrato-video');
+  if (video) {
+    let loopFading = false;
+    video.addEventListener('timeupdate', () => {
+      if (!video.duration) return;
+      const remaining = video.duration - video.currentTime;
+      if (remaining < 1 && !loopFading) {
+        loopFading = true;
+        video.classList.add('loop-fade');
+      } else if (video.currentTime < 0.3 && loopFading) {
+        loopFading = false;
+        video.classList.remove('loop-fade');
+      }
+    });
   }
 
   /* ── Scroll nativo ── */

@@ -551,10 +551,13 @@ em      { font-style: italic; }
   height: 100%;
   object-fit: cover;
   will-change: transform;
-  transition: transform 0.6s var(--ease-out-expo);
+  transition: transform 0.6s var(--ease-out-expo), opacity 1s ease;
 }
 .sustrato-video {
   filter: brightness(0.82) contrast(1.13) saturate(0.8);
+}
+.sustrato-video.loop-fade {
+  opacity: 0;
 }
 .sustrato-img-frame:hover .sustrato-img,
 .sustrato-img-frame:hover .sustrato-video { transform: scale(1.05); }
