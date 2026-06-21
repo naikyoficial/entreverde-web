@@ -36,13 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Loader ── */
   const loader = document.getElementById('loader');
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loader.classList.add('done');
-      document.body.classList.remove('is-loading');
-      runHeroAnimations();
-    }, 300);
-  });
+  let loaderDone = false;
+  function dismissLoader() {
+    if (loaderDone) return;
+    loaderDone = true;
+    loader.classList.add('done');
+    document.body.classList.remove('is-loading');
+    runHeroAnimations();
+  }
+  window.addEventListener('load', () => setTimeout(dismissLoader, 300));
+  setTimeout(dismissLoader, 4000);
 
   /* ── Custom Cursor (desktop only) ── */
   if (!isTouch) {
@@ -77,6 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Hero animations (after loader) ── */
   function runHeroAnimations() {
+    if (typeof gsap === 'undefined') {
+      document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.1)
       .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.24)
