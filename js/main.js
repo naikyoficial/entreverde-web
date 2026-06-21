@@ -293,17 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mensaje     ? `💬 _"${mensaje}"_` : null,
       ].filter(Boolean).join('\n');
 
-      const waUrl = `https://wa.me/5493436218007?text=${encodeURIComponent(lines)}`;
-
-      /* Abrir WA sincrónicamente dentro del evento — evita que el navegador
-         lo bloquee como popup (setTimeout lo rompía) */
-      const link = document.createElement('a');
-      link.href = waUrl;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const waUrl = `whatsapp://send?phone=5493436218007&text=${encodeURIComponent(lines)}`;
+      window.location.href = waUrl;
 
       form.style.display = 'none';
       const success = document.getElementById('form-success');
