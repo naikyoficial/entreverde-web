@@ -196,18 +196,19 @@ em      { font-style: italic; }
 ══════════════════════════════════════ */
 .cursor-dot {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 20px;
   height: 20px;
   background: #fff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease;
+  transition: scale 0.15s ease;
   mix-blend-mode: difference;
 }
 .cursor-dot.hovering {
-  transform: translate(-50%, -50%) scale(1.7);
+  scale: 1.7;
 }
 .cursor-ring { display: none; }
 @media (hover: none) {
@@ -1345,4 +1346,16 @@ em      { font-style: italic; }
   .comp-cards { grid-template-columns: 1fr; }
   .plantas-grid { grid-template-columns: 1fr 1fr; }
   .section-label { letter-spacing: 0.08em; }
+}
+
+@media (hover: none) {
+  .grain { display: none; }
+  .badge-ring { animation-play-state: paused; }
+  .nav.scrolled { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .mobile-menu { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .hero-img,
+  .sustrato-img,
+  .sustrato-video,
+  .comp-card,
+  .planta-card { will-change: auto; }
 }
