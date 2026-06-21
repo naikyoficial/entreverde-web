@@ -5,6 +5,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const isTouch = window.matchMedia('(hover: none)').matches;
+
   /* ── Lazy image fade-in ── */
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     if (img.complete) {
@@ -14,20 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Grain texture ── */
-  const grain = document.querySelector('.grain');
-  if (grain) {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = 256;
-    const img = ctx.createImageData(256, 256);
-    for (let i = 0; i < img.data.length; i += 4) {
-      const v = Math.random() * 255;
-      img.data[i] = img.data[i+1] = img.data[i+2] = v;
-      img.data[i+3] = 28;
+  /* ── Grain texture (desktop only) ── */
+  if (!isTouch) {
+    const grain = document.querySelector('.grain');
+    if (grain) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.height = 256;
+      const img = ctx.createImageData(256, 256);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = Math.random() * 255;
+        img.data[i] = img.data[i+1] = img.data[i+2] = v;
+        img.data[i+3] = 28;
+      }
+      ctx.putImageData(img, 0, 0);
+      grain.style.backgroundImage = `url(${canvas.toDataURL()})`;
     }
-    ctx.putImageData(img, 0, 0);
-    grain.style.backgroundImage = `url(${canvas.toDataURL()})`;
   }
 
   /* ── Loader ── */
@@ -40,33 +44,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   });
 
-  /* ── Custom Cursor ── */
-  const dot   = document.getElementById('cursor-dot');
-  const ring  = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  /* ── Custom Cursor (desktop only) ── */
+  if (!isTouch) {
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-  });
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.translate = `${mx - 10}px ${my - 10}px`;
+    }, { passive: true });
 
-  function animateRing() {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animateRing);
+    document.querySelectorAll('a, button, [data-tilt], .comp-card, .planta-card').forEach(el => {
+      el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+    });
   }
-  animateRing();
 
-  document.querySelectorAll('a, button, [data-tilt], .comp-card, .planta-card').forEach(el => {
-    el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
-  });
+  /* ── Video: disable autoplay on mobile ── */
+  if (isTouch) {
+    const video = document.querySelector('.sustrato-video');
+    if (video) video.removeAttribute('autoplay');
+  }
 
-  /* ── Scroll nativo (sin Lenis para máxima compatibilidad) ── */
+  /* ── Scroll nativo ── */
   let lenis = null;
 
   /* ── GSAP & ScrollTrigger ── */
@@ -76,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Hero animations (after loader) ── */
   function runHeroAnimations() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
     tl.to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.1)
       .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.24)
       .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.4)
@@ -84,19 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
       .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.46);
   }
 
-  /* ── Hero parallax ── */
-  const heroImg = document.getElementById('hero-img');
-  if (heroImg) {
-    gsap.to(heroImg, {
-      y: '18%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
+  /* ── Hero parallax (desktop only) ── */
+  if (!isTouch) {
+    const heroImg = document.getElementById('hero-img');
+    if (heroImg) {
+      gsap.to(heroImg, {
+        y: '18%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
   }
 
   /* ── Nav on scroll ── */
@@ -143,112 +146,115 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('open');
   });
 
-  /* ── Helper: fade-up on scroll ── */
-  function animateOnScroll(selector, vars = {}, triggerEl = null) {
-    const els = document.querySelectorAll(selector);
-    if (!els.length) return;
-    gsap.from(els, {
-      y: 60, opacity: 0, duration: 1,
-      ease: 'power3.out', stagger: 0.12,
-      scrollTrigger: {
-        trigger: triggerEl || els[0],
-        start: 'top 82%',
-        toggleActions: 'play none none none'
-      },
-      ...vars
+  /* ── Scroll animations (desktop only) ── */
+  if (!isTouch) {
+    /* Sustrato section */
+    gsap.from('.sustrato-img-frame', {
+      x: -80, opacity: 0, duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.sustrato-section', start: 'top 72%' }
     });
-  }
+    gsap.from('.sustrato-content .section-label, .sustrato-heading, .sustrato-text, .s-benefit', {
+      x: 60, opacity: 0, duration: 1, stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.sustrato-content', start: 'top 72%' }
+    });
 
-  /* ── Sustrato section ── */
-  gsap.from('.sustrato-img-frame', {
-    x: -80, opacity: 0, duration: 1.2,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.sustrato-section', start: 'top 72%' }
-  });
-  gsap.from('.sustrato-content .section-label, .sustrato-heading, .sustrato-text, .s-benefit', {
-    x: 60, opacity: 0, duration: 1, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.sustrato-content', start: 'top 72%' }
-  });
+    /* Components */
+    gsap.from('.comp-intro > *', {
+      y: 40, opacity: 0, duration: 0.9, stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.comp-intro', start: 'top 80%' }
+    });
+    gsap.from('.comp-card', {
+      y: 60, opacity: 0, duration: 0.9, stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.comp-cards', start: 'top 80%' }
+    });
 
-  /* ── Components ── */
-  gsap.from('.comp-intro > *', {
-    y: 40, opacity: 0, duration: 0.9, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.comp-intro', start: 'top 80%' }
-  });
-  gsap.from('.comp-card', {
-    y: 60, opacity: 0, duration: 0.9, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.comp-cards', start: 'top 80%' }
-  });
+    /* Plantas */
+    gsap.from('.plantas-heading', {
+      y: 40, opacity: 0, duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.plantas-section', start: 'top 80%' }
+    });
+    gsap.from('.planta-card', {
+      y: 60, opacity: 0, duration: 0.9, stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.plantas-grid', start: 'top 80%' }
+    });
 
-  /* ── Plantas ── */
-  gsap.from('.plantas-heading', {
-    y: 40, opacity: 0, duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.plantas-section', start: 'top 80%' }
-  });
-  gsap.from('.planta-card', {
-    y: 60, opacity: 0, duration: 0.9, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.plantas-grid', start: 'top 80%' }
-  });
+    /* FAQ */
+    gsap.from('.faq-heading', {
+      y: 40, opacity: 0, duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.faq-section', start: 'top 80%' }
+    });
+    gsap.from('.faq-item', {
+      y: 30, opacity: 0, duration: 0.7, stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.faq-list', start: 'top 80%' }
+    });
 
-  /* ── FAQ ── */
-  gsap.from('.faq-heading', {
-    y: 40, opacity: 0, duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.faq-section', start: 'top 80%' }
-  });
-  gsap.from('.faq-item', {
-    y: 30, opacity: 0, duration: 0.7, stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.faq-list', start: 'top 80%' }
-  });
+    /* CTA */
+    gsap.from('.cta-heading, .cta-sub', {
+      y: 50, opacity: 0, duration: 1, stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.cta-section', start: 'top 78%' }
+    });
+    gsap.from('.cta-card', {
+      y: 60, opacity: 0, scale: 0.95, duration: 1.1,
+      ease: 'back.out(1.5)',
+      scrollTrigger: { trigger: '.cta-card', start: 'top 82%' }
+    });
+    gsap.from('.product-visual', {
+      x: 50, opacity: 0, duration: 1.1, delay: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.cta-grid', start: 'top 78%' }
+    });
 
-  /* ── CTA ── */
-  gsap.from('.cta-heading, .cta-sub', {
-    y: 50, opacity: 0, duration: 1, stagger: 0.15,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.cta-section', start: 'top 78%' }
-  });
-  gsap.from('.cta-card', {
-    y: 60, opacity: 0, scale: 0.95, duration: 1.1,
-    ease: 'back.out(1.5)',
-    scrollTrigger: { trigger: '.cta-card', start: 'top 82%' }
-  });
-  gsap.from('.product-visual', {
-    x: 50, opacity: 0, duration: 1.1, delay: 0.2,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.cta-grid', start: 'top 78%' }
-  });
+    /* CTA glow pulse */
+    gsap.to('.cta-bg-glow', {
+      opacity: 0.7, scale: 1.15, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+    });
 
-  /* ── CTA glow pulse ── */
-  gsap.to('.cta-bg-glow', {
-    opacity: 0.7, scale: 1.15, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
-  });
-
-  /* ── 3D card tilt ── */
-  document.querySelectorAll('[data-tilt]').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = (e.clientX - cx) / (rect.width / 2);
-      const dy = (e.clientY - cy) / (rect.height / 2);
-      gsap.to(card, {
-        rotateY: dx * 10,
-        rotateX: -dy * 10,
-        transformPerspective: 800,
-        duration: 0.4,
-        ease: 'power2.out'
+    /* 3D card tilt */
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        gsap.to(card, {
+          rotateY: dx * 10,
+          rotateX: -dy * 10,
+          transformPerspective: 800,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power3.out' });
       });
     });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power3.out' });
+
+    /* Scroll progress line */
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+      position: fixed; top: 0; left: 0; height: 2px; width: 0;
+      background: var(--green); z-index: 9990; pointer-events: none;
+      transition: width 0.1s linear;
+    `;
+    document.body.appendChild(progressBar);
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: self => {
+        progressBar.style.width = (self.progress * 100) + '%';
+      }
     });
-  });
+  }
 
   /* ── FAQ accordion ── */
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -293,8 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mensaje     ? `💬 _"${mensaje}"_` : null,
       ].filter(Boolean).join('\n');
 
-      const waUrl = `whatsapp://send?phone=5493436218007&text=${encodeURIComponent(lines)}`;
-      window.location.href = waUrl;
+      window.location.href = `whatsapp://send?phone=5493436218007&text=${encodeURIComponent(lines)}`;
 
       form.style.display = 'none';
       const success = document.getElementById('form-success');
@@ -302,22 +307,5 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.from(success, { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
     });
   }
-
-  /* ── Scroll progress line ── */
-  const progressBar = document.createElement('div');
-  progressBar.style.cssText = `
-    position: fixed; top: 0; left: 0; height: 2px; width: 0;
-    background: var(--green); z-index: 9990; pointer-events: none;
-    transition: width 0.1s linear;
-  `;
-  document.body.appendChild(progressBar);
-
-  ScrollTrigger.create({
-    start: 'top top',
-    end: 'bottom bottom',
-    onUpdate: self => {
-      progressBar.style.width = (self.progress * 100) + '%';
-    }
-  });
 
 });
