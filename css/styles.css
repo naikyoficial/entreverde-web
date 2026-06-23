@@ -1066,6 +1066,15 @@ em      { font-style: italic; }
   margin-top: 8px;
 }
 
+/* ── Distributor program ── */
+.dist-sub { max-width: 600px; margin-bottom: 44px; }
+.dist-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 56px;
+}
+
 /* ── Form ── */
 .form-wrap {
   display: grid;
@@ -1329,6 +1338,7 @@ em      { font-style: italic; }
   .faq-a p { padding: 14px 20px 18px; font-size: 14px; }
 
   /* CTA */
+  .dist-benefits { grid-template-columns: 1fr; }
   .cta-card { padding: 28px 20px; }
 
   /* Form */
