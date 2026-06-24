@@ -1773,13 +1773,14 @@ body.is-loading .h1-inner {
   .sustrato-img,
   .sustrato-video,
   .comp-card,
-  .planta-card { will-change: auto; }
-  /* Premium layer — keep it light on touch devices */
-  .aurora-blob {
-    animation: none;
-    filter: blur(80px);
-    opacity: 0.28;
-  }
+  .planta-card,
+  .aurora-blob { will-change: auto; }
+
+  /* Premium layer — the fixed, heavily-blurred aurora is the main cause of
+     scroll jank on mobile (a huge blur() filter recomposites every frame).
+     The section gradients already provide ambient color, so drop it here. */
+  .aurora { display: none; }
+
   .cta-card::before { animation: none; opacity: 0.45; }
   .comp-card,
   .planta-card,
@@ -1789,6 +1790,11 @@ body.is-loading .h1-inner {
     -webkit-backdrop-filter: none;
     background: var(--bg-card);
   }
+
+  /* Lighter shadows — big blur-radius shadows are expensive to repaint
+     while elements scroll through the viewport on mobile. */
+  .faq-list { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); }
+  .cta-card { box-shadow: none; }
 }
 
 /* ── Respect reduced-motion preference ── */
