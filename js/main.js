@@ -48,61 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => setTimeout(dismissLoader, 300));
   setTimeout(dismissLoader, 4000);
 
-  /* ── Custom Cursor — dot + lagging ring (desktop only) ── */
-  if (!isTouch) {
-    const dot  = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0;          // pointer
-    let rx = 0, ry = 0;          // ring (lerped)
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.translate = `${mx - 10}px ${my - 10}px`;
-    }, { passive: true });
-
-    /* Ring follows with smooth lag */
-    (function ringLoop() {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.translate = `${rx - 20}px ${ry - 20}px`;
-      requestAnimationFrame(ringLoop);
-    })();
-
-    document.querySelectorAll('a, button, [data-tilt], .comp-card, .planta-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        dot.classList.add('hovering');
-        ring.classList.add('hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        dot.classList.remove('hovering');
-        ring.classList.remove('hovering');
-      });
-    });
-  }
-
-  /* ── Hero floating particles (desktop, motion allowed) ── */
-  if (!isTouch && !reduceMotion) {
-    const field = document.getElementById('hero-particles');
-    if (field) {
-      const COUNT = 18;
-      let html = '';
-      for (let i = 0; i < COUNT; i++) {
-        const size  = (Math.random() * 3 + 1.5).toFixed(1);          // 1.5–4.5px
-        const left  = (Math.random() * 100).toFixed(2);              // %
-        const dur   = (Math.random() * 14 + 12).toFixed(1);          // 12–26s
-        const delay = (Math.random() * -26).toFixed(1);              // negative → already in flight
-        const drift = (Math.random() * 80 - 40).toFixed(0);          // -40–40px
-        const op    = (Math.random() * 0.4 + 0.25).toFixed(2);
-        html += `<span class="particle" style="
-          width:${size}px;height:${size}px;left:${left}%;
-          animation-duration:${dur}s;animation-delay:${delay}s;
-          --drift:${drift}px;--p-op:${op};"></span>`;
-      }
-      field.innerHTML = html;
-    }
-  }
-
   /* ── Magnetic buttons (desktop, motion allowed) ── */
   if (!isTouch && !reduceMotion) {
     document.querySelectorAll('[data-magnetic]').forEach(el => {
@@ -171,25 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Hero animations (after loader) ── */
   function runHeroAnimations() {
-    if (typeof gsap === 'undefined') {
+    if (typeof gsap === 'undefined' || reduceMotion) {
       document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
-      document.querySelectorAll('.h1-inner').forEach(el => { el.style.transform = 'none'; });
       return;
     }
-    gsap.set('.h1-inner', { yPercent: 110 });
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.to('.h1-line:first-child .h1-inner', { yPercent: 0, duration: 1.15 }, 0.1)
-      .to('.h1-line:last-child .h1-inner',  { yPercent: 0, duration: 1.15 }, 0.26)
+    tl.from('.h1-line:first-child .h1-inner', { yPercent: 110, duration: 1.15 }, 0.1)
+      .from('.h1-line:last-child .h1-inner',  { yPercent: 110, duration: 1.15 }, 0.26)
       .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.46)
       .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.6)
       .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
   }
 
   /* ── Hero parallax (desktop only) ── */
-  if (!isTouch) {
+  if (!isTouch && !reduceMotion) {
     const heroImg = document.getElementById('hero-img');
     if (heroImg) {
       gsap.to(heroImg, {
@@ -250,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── Scroll animations (desktop only) ── */
-  if (!isTouch) {
+  if (!isTouch && !reduceMotion) {
     /* Sustrato section */
     gsap.from('.sustrato-img-frame', {
       x: -80, opacity: 0, duration: 1.2,
