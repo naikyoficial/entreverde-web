@@ -10,27 +10,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Lazy image fade-in ── */
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-    if (img.complete) {
+    if (img.complete && img.naturalWidth) {
       img.style.opacity = 1;
     } else {
       img.addEventListener('load', () => img.style.opacity = 1);
+      img.addEventListener('error', () => {
+        img.style.opacity = 0;
+        img.style.display = 'none';
+      });
     }
   });
 
-  /* ── Pause looping video when offscreen (saves decoding work / mobile jank) ── */
+  /* ── Video with full error resilience ── */
   (function () {
     const video = document.querySelector('.sustrato-video');
-    if (!video || !('IntersectionObserver' in window)) return;
+    if (!video) return;
+
+    // Skip video on very slow connections — show static poster-fallback instead
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn && (conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) {
+      video.style.display = 'none';
+      return;
+    }
+
+    let stallTimer = null;
+    let hasStartedPlaying = false;
+
+    function showPosterFallback() {
+      clearTimeout(stallTimer);
+      try { video.pause(); } catch (_) {}
+      video.style.display = 'none';
+    }
+
+    video.addEventListener('error', showPosterFallback, { once: true });
+    const src = video.querySelector('source');
+    if (src) src.addEventListener('error', showPosterFallback, { once: true });
+
+    video.addEventListener('playing', () => {
+      hasStartedPlaying = true;
+      clearTimeout(stallTimer);
+    }, { once: true });
+
+    function tryPlay() {
+      const p = video.play();
+      if (p && p.catch) p.catch(err => {
+        // AbortError is expected when the user scrolls away before play completes — not a real failure
+        if (!err || err.name !== 'AbortError') showPosterFallback();
+      });
+      // If video hasn't started playing within 8 s, fall back to the poster gradient
+      if (!hasStartedPlaying) {
+        clearTimeout(stallTimer);
+        stallTimer = setTimeout(() => {
+          if (!hasStartedPlaying) showPosterFallback();
+        }, 8000);
+      }
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      tryPlay();
+      return;
+    }
+
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => {
         if (en.isIntersecting) {
-          const p = video.play();
-          if (p && p.catch) p.catch(() => {});
+          tryPlay();
         } else {
-          video.pause();
+          clearTimeout(stallTimer);
+          try { video.pause(); } catch (_) {}
         }
       });
     }, { threshold: 0.15 });
+
     io.observe(video);
   })();
 
