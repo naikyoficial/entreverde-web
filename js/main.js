@@ -17,6 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Pause looping video when offscreen (saves decoding work / mobile jank) ── */
+  (function () {
+    const video = document.querySelector('.sustrato-video');
+    if (!video || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(video);
+  })();
+
   /* ── Grain texture (desktop only) ── */
   if (!isTouch) {
     const grain = document.querySelector('.grain');
