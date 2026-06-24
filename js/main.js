@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const isTouch = window.matchMedia('(hover: none)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── Lazy image fade-in ── */
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
@@ -47,11 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => setTimeout(dismissLoader, 300));
   setTimeout(dismissLoader, 4000);
 
-  /* ── Custom Cursor (desktop only) ── */
+  /* ── Custom Cursor — dot + lagging ring (desktop only) ── */
   if (!isTouch) {
     const dot  = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0;
+    let mx = 0, my = 0;          // pointer
+    let rx = 0, ry = 0;          // ring (lerped)
 
     document.addEventListener('mousemove', e => {
       mx = e.clientX;
@@ -59,11 +61,105 @@ document.addEventListener('DOMContentLoaded', () => {
       dot.style.translate = `${mx - 10}px ${my - 10}px`;
     }, { passive: true });
 
+    /* Ring follows with smooth lag */
+    (function ringLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.translate = `${rx - 20}px ${ry - 20}px`;
+      requestAnimationFrame(ringLoop);
+    })();
+
     document.querySelectorAll('a, button, [data-tilt], .comp-card, .planta-card').forEach(el => {
-      el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+      el.addEventListener('mouseenter', () => {
+        dot.classList.add('hovering');
+        ring.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        dot.classList.remove('hovering');
+        ring.classList.remove('hovering');
+      });
     });
   }
+
+  /* ── Hero floating particles (desktop, motion allowed) ── */
+  if (!isTouch && !reduceMotion) {
+    const field = document.getElementById('hero-particles');
+    if (field) {
+      const COUNT = 18;
+      let html = '';
+      for (let i = 0; i < COUNT; i++) {
+        const size  = (Math.random() * 3 + 1.5).toFixed(1);          // 1.5–4.5px
+        const left  = (Math.random() * 100).toFixed(2);              // %
+        const dur   = (Math.random() * 14 + 12).toFixed(1);          // 12–26s
+        const delay = (Math.random() * -26).toFixed(1);              // negative → already in flight
+        const drift = (Math.random() * 80 - 40).toFixed(0);          // -40–40px
+        const op    = (Math.random() * 0.4 + 0.25).toFixed(2);
+        html += `<span class="particle" style="
+          width:${size}px;height:${size}px;left:${left}%;
+          animation-duration:${dur}s;animation-delay:${delay}s;
+          --drift:${drift}px;--p-op:${op};"></span>`;
+      }
+      field.innerHTML = html;
+    }
+  }
+
+  /* ── Magnetic buttons (desktop, motion allowed) ── */
+  if (!isTouch && !reduceMotion) {
+    document.querySelectorAll('[data-magnetic]').forEach(el => {
+      const inner = el.querySelector('.btn-magnetic-inner');
+      const strength = 0.35;
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+        if (inner) inner.style.transform = `translate(${dx * strength * 0.5}px, ${dy * strength * 0.5}px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+        if (inner) inner.style.transform = '';
+      });
+    });
+  }
+
+  /* ── Card spotlight (cursor-tracking glow, desktop only) ── */
+  if (!isTouch) {
+    document.querySelectorAll('.comp-card, .planta-card, .cta-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+    });
+  }
+
+  /* ── Stat count-up (all devices) ── */
+  (function () {
+    const nums = document.querySelectorAll('.stat-num[data-count]');
+    if (!nums.length) return;
+    const animateNum = el => {
+      const target = parseFloat(el.dataset.count);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      if (reduceMotion) { el.textContent = prefix + target + suffix; return; }
+      const dur = 1600;
+      const start = performance.now();
+      const step = now => {
+        const t = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - t, 3);          // easeOutCubic
+        el.textContent = prefix + Math.round(target * eased) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = prefix + target + suffix;
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { animateNum(en.target); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(n => io.observe(n));
+  })();
 
 
   /* ── Scroll nativo ── */
@@ -80,14 +176,16 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
+      document.querySelectorAll('.h1-inner').forEach(el => { el.style.transform = 'none'; });
       return;
     }
+    gsap.set('.h1-inner', { yPercent: 110 });
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.to('.h1-line:first-child', { y: 0, opacity: 1, duration: 1.1 }, 0.1)
-      .to('.h1-line:last-child',  { y: 0, opacity: 1, duration: 1.1 }, 0.24)
-      .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.4)
-      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.54)
-      .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.46);
+    tl.to('.h1-line:first-child .h1-inner', { yPercent: 0, duration: 1.15 }, 0.1)
+      .to('.h1-line:last-child .h1-inner',  { yPercent: 0, duration: 1.15 }, 0.26)
+      .to('.hero-sub',           { y: 0, opacity: 1, duration: 0.9 }, 0.46)
+      .to('.hero-scroll',        { y: 0, opacity: 1, duration: 0.7 }, 0.6)
+      .to('.formula-badge',      { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
   }
 
   /* ── Hero parallax (desktop only) ── */
@@ -163,6 +261,13 @@ document.addEventListener('DOMContentLoaded', () => {
       x: 60, opacity: 0, duration: 1, stagger: 0.1,
       ease: 'power3.out',
       scrollTrigger: { trigger: '.sustrato-content', start: 'top 72%' }
+    });
+
+    /* Stats band */
+    gsap.from('.stat', {
+      y: 40, opacity: 0, duration: 0.9, stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.stats-section', start: 'top 82%' }
     });
 
     /* Components */
