@@ -1246,6 +1246,17 @@ em      { font-style: italic; }
   color: var(--text-3);
   letter-spacing: 0.04em;
 }
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+.footer-social-link {
+  color: var(--text-3);
+  transition: color 0.2s;
+  line-height: 0;
+}
+.footer-social-link:hover { color: var(--green); }
 .footer-copy {
   font-size: 11px;
   color: var(--text-3);
