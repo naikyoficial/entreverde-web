@@ -1250,6 +1250,30 @@ em      { font-style: italic; }
   font-size: 11px;
   color: var(--text-3);
 }
+.crafted-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  line-height: 1;
+  user-select: none;
+}
+.crafted-by-label { color: rgba(180, 175, 165, .35); }
+.crafted-by-brand {
+  background: linear-gradient(90deg, #5A3C0A 0%, #A87214 22%, #D4A020 46%, #F0C840 52%, #D4A020 58%, #A87214 78%, #5A3C0A 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: swGoldShimmer 6s linear infinite;
+}
+@keyframes swGoldShimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
 
 /* ══════════════════════════════════════
    GSAP — Initial states
