@@ -20,16 +20,27 @@ document.addEventListener('DOMContentLoaded', () => {
      BLOCK 1 · CORE (no GSAP required)
   ───────────────────────────────────── */
 
-  /* ── Lazy image fade-in ── */
-  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  /* ── Lazy image fade-in ──
+     Bulletproof: an image must NEVER stay stuck invisible. We fade in on load,
+     but a safety sweep forces every lazy image visible after a few seconds in
+     case a 'load' event is missed (some mobile browsers fire it before the
+     listener attaches, or not at all for cached/decoded images). */
+  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+  lazyImgs.forEach(img => {
+    const reveal = () => { img.style.opacity = 1; };
+    if (img.complete && img.naturalWidth > 0) { reveal(); return; }
     img.style.opacity = 0;
-    if (img.complete) {
-      img.style.opacity = 1;
-    } else {
-      img.addEventListener('load',  () => { img.style.opacity = 1; });
-      img.addEventListener('error', () => { img.style.display  = 'none'; });
-    }
+    img.addEventListener('load',  reveal);
+    img.addEventListener('error', () => { img.style.display = 'none'; });
   });
+  /* Safety net — reveal anything still hidden, whatever the reason. */
+  setTimeout(() => {
+    lazyImgs.forEach(img => {
+      if (img.style.display !== 'none' && img.style.opacity !== '1') {
+        img.style.opacity = 1;
+      }
+    });
+  }, 2500);
 
   /* ── Video resilience ── */
   (function () {
