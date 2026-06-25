@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
           try { video.pause(); } catch (_) {}
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.01, rootMargin: '300px 0px' });
     io.observe(video);
   })();
 
