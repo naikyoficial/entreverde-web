@@ -56,7 +56,7 @@ body {
 }
 body.is-loading { overflow: hidden; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
-img[loading="lazy"] { opacity: 0; transition: opacity 0.5s ease; }
+img[loading="lazy"] { transition: opacity 0.5s ease; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }

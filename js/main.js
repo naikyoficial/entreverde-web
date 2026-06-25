@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── Lazy image fade-in ── */
+  // Opacity is set to 0 here (not in CSS) so images are visible without JS
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-    if (img.complete && img.naturalWidth) {
+    img.style.opacity = 0;
+    if (img.complete) {
       img.style.opacity = 1;
     } else {
       img.addEventListener('load', () => img.style.opacity = 1);
-      img.addEventListener('error', () => {
-        img.style.opacity = 0;
-        img.style.display = 'none';
-      });
+      img.addEventListener('error', () => img.style.display = 'none');
     }
   });
 
@@ -33,37 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    let stallTimer = null;
-    let hasStartedPlaying = false;
-
     function showPosterFallback() {
-      clearTimeout(stallTimer);
       try { video.pause(); } catch (_) {}
       video.style.display = 'none';
     }
 
+    // Only hide on definitive failures — never on slow buffering
     video.addEventListener('error', showPosterFallback, { once: true });
     const src = video.querySelector('source');
     if (src) src.addEventListener('error', showPosterFallback, { once: true });
 
-    video.addEventListener('playing', () => {
-      hasStartedPlaying = true;
-      clearTimeout(stallTimer);
-    }, { once: true });
-
     function tryPlay() {
       const p = video.play();
       if (p && p.catch) p.catch(err => {
-        // AbortError is expected when the user scrolls away before play completes — not a real failure
+        // AbortError is normal when user scrolls away mid-buffer — not a real failure
         if (!err || err.name !== 'AbortError') showPosterFallback();
       });
-      // If video hasn't started playing within 8 s, fall back to the poster gradient
-      if (!hasStartedPlaying) {
-        clearTimeout(stallTimer);
-        stallTimer = setTimeout(() => {
-          if (!hasStartedPlaying) showPosterFallback();
-        }, 8000);
-      }
     }
 
     if (!('IntersectionObserver' in window)) {
@@ -76,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (en.isIntersecting) {
           tryPlay();
         } else {
-          clearTimeout(stallTimer);
           try { video.pause(); } catch (_) {}
         }
       });
