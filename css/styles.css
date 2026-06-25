@@ -40,7 +40,7 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -1298,7 +1298,8 @@ body.is-loading .h1-inner {
   font-weight: 500;
   color: var(--text);
 }
-.form-success.visible { display: flex; }
+.form-success.visible { display: flex; animation: successIn 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes successIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
 /* ── Footer ── */
 .footer {
