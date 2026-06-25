@@ -91,20 +91,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── Hero animations ── */
+  function showRevealElements() {
+    document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
   function runHeroAnimations() {
     if (typeof gsap === 'undefined' || reduceMotion) {
-      document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
+      showRevealElements();
       return;
     }
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.from('.h1-line:first-child .h1-inner', { yPercent: 110, duration: 1.15 }, 0.1)
-      .from('.h1-line:last-child .h1-inner',  { yPercent: 110, duration: 1.15 }, 0.26)
-      .to('.hero-sub',      { y: 0, opacity: 1, duration: 0.9 }, 0.46)
-      .to('.hero-scroll',   { y: 0, opacity: 1, duration: 0.7 }, 0.6)
-      .to('.formula-badge', { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
+    try {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.from('.h1-line:first-child .h1-inner', { yPercent: 110, duration: 1.15 }, 0.1)
+        .from('.h1-line:last-child .h1-inner',  { yPercent: 110, duration: 1.15 }, 0.26)
+        .to('.hero-sub',      { y: 0, opacity: 1, duration: 0.9 }, 0.46)
+        .to('.hero-scroll',   { y: 0, opacity: 1, duration: 0.7 }, 0.6)
+        .to('.formula-badge', { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
+    } catch (_) {
+      showRevealElements();
+    }
   }
 
   /* ── Loader ── */
@@ -184,7 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (a.classList.contains('btn-cta')) return;
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
