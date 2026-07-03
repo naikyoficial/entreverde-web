@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://entreverde.com.ar/sitemap.xml
+Sitemap: https://www.entreverde.com.ar/sitemap.xml
