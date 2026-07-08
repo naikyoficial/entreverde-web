@@ -460,23 +460,75 @@ body.is-loading .h1-inner {
 }
 .br-desk { display: block; }
 
-.hero-scroll {
+/* Hero actions row — primary buy CTA */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.btn-hero-buy {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-2);
-  letter-spacing: 0.06em;
-  transition: color 0.2s;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--green);
+  padding: 15px 30px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.4s;
+  box-shadow: 0 10px 36px rgba(228, 208, 156, 0.22);
 }
-.hero-scroll svg { animation: bounceArrow 2s ease-in-out infinite; }
-.hero-scroll:hover { color: var(--green); }
+.btn-hero-buy::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 55%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.42) 50%, transparent 100%);
+  transform: skewX(-22deg);
+  pointer-events: none;
+  transition: left 0s;
+}
+.btn-hero-buy:hover {
+  background: #c9b578;
+  box-shadow:
+    0 0 0 4px rgba(228, 208, 156, 0.18),
+    0 0 28px 6px rgba(228, 208, 156, 0.32),
+    0 10px 42px rgba(228, 208, 156, 0.28);
+}
+.btn-hero-buy:hover::after {
+  left: 130%;
+  transition: left 0.55s ease;
+}
 
-@keyframes bounceArrow {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(4px); }
+/* Secondary hero CTA — distribuir (outline) */
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 15px 28px;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+  background: rgba(228, 208, 156, 0.05);
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
+.btn-hero-secondary svg { transition: transform 0.3s var(--ease-out-expo); }
+.btn-hero-secondary:hover {
+  background: rgba(228, 208, 156, 0.12);
+  border-color: rgba(228, 208, 156, 0.42);
+  color: var(--green);
+}
+.btn-hero-secondary:hover svg { transform: translateX(3px); }
 
 /* Formula Badge */
 .formula-badge {
@@ -1719,7 +1771,9 @@ body.is-loading .h1-inner {
   .hero-content { padding-top: 80px; padding-bottom: 56px; }
   .hero-heading { margin-bottom: 20px; }
   .hero-sub { margin-bottom: 32px; font-size: 15px; }
-  .hero-scroll { font-size: 11px; }
+  .hero-actions { gap: 14px; }
+  .btn-hero-buy,
+  .btn-hero-secondary { font-size: 14px; padding: 14px 24px; }
   .br-desk { display: none; }
 
   /* Formula badge */
