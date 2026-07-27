@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Privacidad de indexación: página NO pública, solo compartida a leads -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<title>Entre Verde · Programa Mayorista 2026</title>
+
+<link rel="icon" href="images/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="images/favicon.png?v=2" type="image/png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Paleta Entre Verde */
+  --bg:         #142b25;
+  --bg-1:       #1a3530;
+  --bg-2:       #1f3d35;
+  --bg-card:    #1a3a30;
+  --bg-card-2:  #163028;
+  --green:      #e4d09c;
+  --green-dim:  #c9b578;
+  --green-dark: #8a7a50;
+  --green-soft: #cdbf99;
+  --text:       #f4f2ea;
+  --text-2:     #aab6af;
+  --text-3:     #6d847b;
+  --border:     #284339;
+  --border-2:   rgba(228, 208, 156, 0.18);
+  --positive:   #7bc294;
+
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Manrope', system-ui, -apple-system, sans-serif;
+  --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.005em;
+}
+
+/* Fondo con aurora sutil */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 15%, rgba(45, 92, 78, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 85% 90%, rgba(228, 208, 156, 0.06) 0%, transparent 55%);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(165deg, #0d2019 0%, var(--bg-1) 55%, #0e221b 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3.5rem 2.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--green);
+  opacity: 0.55;
+}
+
+.hero-logo {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 0.75rem;
+  display: block;
+  object-fit: contain;
+}
+
+.hero-brand {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.hero-brand em {
+  color: var(--green);
+  font-style: italic;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.hero-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.hero-attrs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.hero-attr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-right: 1px solid var(--border-2);
+}
+.hero-attr:last-child { border-right: none; }
+
+.hero-attr-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 8px;
+  color: var(--green);
+}
+
+.hero-attr-name {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.hero-attr-desc {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 300;
+}
+
+/* ── SECTION LABEL ── */
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--green);
+}
+
+/* ── PRICE CARDS ── */
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 1rem;
+}
+
+.price-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+}
+.price-card:hover { transform: translateY(-3px); border-color: var(--border-2); }
+
+.price-card.featured {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(228, 208, 156, 0.08) 0%, transparent 70%),
+    var(--bg-card);
+  border-color: var(--border-2);
+  box-shadow: 0 0 0 1px rgba(228, 208, 156, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.price-badge {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: var(--bg);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.price-tier {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 3px;
+}
+.price-card.featured .price-tier { color: var(--green-dim); }
+
+.price-qty {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+.price-amount {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 3px;
+  letter-spacing: -0.02em;
+}
+.price-card.featured .price-amount { color: var(--green); }
+
+.price-unit {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-bottom: 1.25rem;
+}
+
+.price-shipping {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--positive);
+  font-weight: 500;
+}
+.price-shipping svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+.price-footnote {
+  font-size: 12px;
+  color: var(--text-2);
+  text-align: center;
+  padding: 0.9rem 1rem;
+  background: var(--bg-card-2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+.price-footnote strong { color: var(--green); font-weight: 600; }
+
+/* ── CALCULADORA ── */
+.calc-wrap {
+  background: var(--bg-card);
+  border-radius: 22px;
+  border: 1px solid var(--border-2);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.calc-header {
+  background:
+    radial-gradient(ellipse 60% 100% at 100% 50%, rgba(228, 208, 156, 0.08) 0%, transparent 60%),
+    var(--bg-2);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.calc-header-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(228, 208, 156, 0.1);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.calc-header-icon svg { width: 22px; height: 22px; color: var(--green); }
+
+.calc-header-text h2 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+.calc-header-text h2 em { color: var(--green); font-style: italic; }
+
+.calc-header-text p {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 300;
+}
+
+.calc-body { padding: 2rem; }
+
+/* Toggle */
+.toggle-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.toggle-opt {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: rgba(20, 43, 37, 0.4);
+  transition: border-color 0.25s, background 0.25s, transform 0.15s;
+  text-align: left;
+}
+.toggle-opt:hover { border-color: var(--border-2); transform: translateY(-2px); }
+.toggle-opt.active {
+  border-color: var(--green);
+  background: rgba(228, 208, 156, 0.08);
+  box-shadow: 0 0 0 3px rgba(228, 208, 156, 0.12);
+}
+
+.toggle-opt-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.toggle-opt.active .toggle-opt-label { color: var(--green); }
+
+.toggle-opt-qty {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+  line-height: 1;
+}
+.toggle-opt.active .toggle-opt-qty { color: var(--green); }
+
+.toggle-opt-price {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 400;
+}
+
+/* Slider */
+.slider-section { margin-bottom: 2rem; }
+
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slider-label {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.slider-value {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.slider-value span {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.slider-track-wrap { position: relative; margin-bottom: 6px; }
+
+input[type="range"].main-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--green) var(--pct, 40%), var(--border) var(--pct, 40%));
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].main-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--bg);
+  box-shadow: 0 2px 12px rgba(228, 208, 156, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+input[type="range"].main-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+input[type="range"].main-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--bg);
+  box-shadow: 0 2px 12px rgba(228, 208, 156, 0.35);
+  cursor: pointer;
+}
+
+.slider-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+/* Results */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.result-card {
+  background: rgba(20, 43, 37, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+}
+.result-card.main-result {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(228, 208, 156, 0.1) 0%, transparent 70%),
+    rgba(20, 43, 37, 0.55);
+  border-color: var(--border-2);
+}
+
+.result-label {
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.result-card.main-result .result-label { color: var(--green-dim); }
+
+.result-value {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.result-card.main-result .result-value { color: var(--green); font-size: 26px; }
+
+.result-sub {
+  font-size: 10.5px;
+  color: var(--text-3);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+/* Breakdown table */
+.breakdown {
+  background: rgba(20, 43, 37, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.breakdown-row:last-child {
+  border-bottom: none;
+  background: rgba(228, 208, 156, 0.08);
+  padding: 15px 18px;
+  font-size: 14px;
+}
+
+.breakdown-label { color: var(--text-2); font-weight: 400; }
+.breakdown-row:last-child .breakdown-label { color: var(--text); font-weight: 500; }
+
+.val-pos { color: var(--positive); font-weight: 600; }
+.val-neutral { color: var(--text); font-weight: 500; }
+.val-featured {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 17px;
+  font-family: var(--font-serif);
+}
+
+/* Shipping note */
+.shipping-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(123, 194, 148, 0.06);
+  border: 1px solid rgba(123, 194, 148, 0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 1.25rem;
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+.shipping-note svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--positive);
+  margin-top: 2px;
+}
+.shipping-note strong { color: var(--positive); font-weight: 600; }
+
+/* ── COMPONENTES ── */
+.components-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 2.5rem;
+}
+
+.component-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 15px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s;
+}
+.component-item:hover { border-color: var(--border-2); }
+
+.comp-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.comp-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+  letter-spacing: 0.005em;
+}
+
+.comp-desc {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* ── CTA ── */
+.cta-block {
+  background:
+    radial-gradient(ellipse 60% 55% at 92% 80%, rgba(228, 208, 156, 0.07) 0%, transparent 55%),
+    linear-gradient(165deg, #0d2019 0%, var(--bg) 55%, #0e221b 100%);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 2.75rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.cta-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green-dim);
+  margin-bottom: 0.9rem;
+  font-weight: 600;
+}
+
+.cta-headline {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.cta-headline em { color: var(--green); font-style: italic; }
+
+.cta-sub {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s, background 0.25s, box-shadow 0.3s;
+  letter-spacing: 0.02em;
+}
+.cta-btn:hover { transform: translateY(-1px); }
+
+.cta-btn.primary {
+  background: var(--green);
+  color: var(--bg);
+  box-shadow: 0 10px 30px rgba(228, 208, 156, 0.22);
+}
+.cta-btn.primary:hover {
+  background: var(--green-dim);
+  box-shadow: 0 14px 42px rgba(228, 208, 156, 0.32);
+}
+
+.cta-btn.secondary {
+  background: rgba(228, 208, 156, 0.08);
+  border: 1px solid var(--border-2);
+  color: var(--green);
+}
+.cta-btn.secondary:hover {
+  background: rgba(228, 208, 156, 0.14);
+  border-color: rgba(228, 208, 156, 0.4);
+}
+
+.cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.cta-url {
+  margin-top: 1.75rem;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  font-weight: 300;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 520px) {
+  .page { padding: 1rem 1rem 3rem; }
+  .hero { padding: 2.5rem 1.5rem 2rem; }
+  .hero-brand { font-size: 24px; letter-spacing: 0.25em; }
+  .hero-desc { font-size: 12px; }
+  .hero-attrs { gap: 0; }
+  .hero-attr { padding: 0 0.75rem; }
+  .hero-attr-desc { font-size: 10px; }
+  .price-grid { grid-template-columns: 1fr; }
+  .price-amount { font-size: 36px; }
+  .results-grid { grid-template-columns: 1fr 1fr; }
+  .results-grid .result-card:last-child { grid-column: span 2; }
+  .components-grid { grid-template-columns: 1fr; }
+  .toggle-wrap { grid-template-columns: 1fr; }
+  .calc-body { padding: 1.5rem 1.25rem; }
+  .calc-header { padding: 1.25rem 1.5rem; }
+  .calc-header-text h2 { font-size: 19px; }
+  .cta-headline { font-size: 26px; }
+  .cta-block { padding: 2.25rem 1.5rem; }
+  .slider-value { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <svg class="hero-bg" viewBox="0 0 700 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M350 40 Q420 120 350 200 Q280 280 350 360" stroke="#e4d09c" stroke-width="1.5" fill="none"/>
+      <path d="M350 200 Q420 170 480 220" stroke="#e4d09c" stroke-width="1" fill="none"/>
+      <path d="M350 280 Q280 250 220 300" stroke="#e4d09c" stroke-width="1" fill="none"/>
+      <path d="M100 100 Q160 180 120 260" stroke="#e4d09c" stroke-width="1" fill="none"/>
+      <path d="M600 150 Q540 230 580 310" stroke="#e4d09c" stroke-width="1" fill="none"/>
+      <circle cx="350" cy="40" r="3" fill="#e4d09c"/>
+      <circle cx="350" cy="360" r="3" fill="#e4d09c"/>
+    </svg>
+
+    <div class="hero-eyebrow">Programa Mayorista 2026</div>
+
+    <img class="hero-logo" src="images/logo-entreverde.png" alt="Entre Verde">
+    <div class="hero-brand">Entre <em>Verde</em></div>
+    <div class="hero-desc">Aroid Mix Premium · El sustrato para coleccionistas y viveros · Argentina</div>
+
+    <div class="hero-attrs">
+      <div class="hero-attr">
+        <svg class="hero-attr-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M16 6 C16 6 10 12 10 18 C10 22 12.7 24 16 24 C19.3 24 22 22 22 18 C22 12 16 6 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M16 12 L16 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="hero-attr-name">Aireación</div>
+        <div class="hero-attr-desc">Raíces que respiran</div>
+      </div>
+      <div class="hero-attr">
+        <svg class="hero-attr-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M8 14 L16 6 L24 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M16 6 L16 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M10 20 C10 20 8 22 8 24 L24 24 C24 22 22 20 22 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="hero-attr-name">Drenaje</div>
+        <div class="hero-attr-desc">Sin encharcamientos</div>
+      </div>
+      <div class="hero-attr">
+        <svg class="hero-attr-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M16 8 L16 11 M16 21 L16 24 M8 16 L11 16 M21 16 L24 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="hero-attr-name">Humedad</div>
+        <div class="hero-attr-desc">Retención precisa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRECIOS ── -->
+  <div class="section-eyebrow">Precios por volumen</div>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-tier">Medio pallet</div>
+      <div class="price-qty">200 bolsas</div>
+      <div class="price-amount">$6.000</div>
+      <div class="price-unit">por unidad</div>
+      <div class="price-shipping">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2" ry="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        25% desc. en envío
+      </div>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-badge">Mejor precio</div>
+      <div class="price-tier">Pallet completo</div>
+      <div class="price-qty">400 bolsas</div>
+      <div class="price-amount">$5.500</div>
+      <div class="price-unit">por unidad</div>
+      <div class="price-shipping">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2" ry="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        50% desc. en envío
+      </div>
+    </div>
+  </div>
+
+  <div class="price-footnote">
+    Precio sugerido de venta al público: <strong>$9.900</strong> · Bolsa sellada de 6 litros · Lista para exhibición<br>
+    Cada bolsa rinde <strong>~7 macetas medianas</strong>
+  </div>
+
+  <!-- ── CALCULADORA ── -->
+  <div class="section-eyebrow">Calculadora de rentabilidad</div>
+
+  <div class="calc-wrap">
+    <div class="calc-header">
+      <div class="calc-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+      </div>
+      <div class="calc-header-text">
+        <h2>Simulá <em>tu ganancia</em></h2>
+        <p>Mové el precio de venta y elegí el volumen que te conviene</p>
+      </div>
+    </div>
+
+    <div class="calc-body">
+      <div class="toggle-wrap">
+        <div class="toggle-opt active" id="opt-medio" onclick="setPallet('medio')">
+          <div class="toggle-opt-label">Medio pallet</div>
+          <div class="toggle-opt-qty">200 u.</div>
+          <div class="toggle-opt-price">$6.000 / bolsa</div>
+        </div>
+        <div class="toggle-opt" id="opt-completo" onclick="setPallet('completo')">
+          <div class="toggle-opt-label">Pallet completo</div>
+          <div class="toggle-opt-qty">400 u.</div>
+          <div class="toggle-opt-price">$5.500 / bolsa</div>
+        </div>
+      </div>
+
+      <div class="slider-section">
+        <div class="slider-top">
+          <span class="slider-label">Tu precio de venta al público</span>
+          <div class="slider-value" id="pvp-display">$9.900 <span>/ bolsa</span></div>
+        </div>
+        <div class="slider-track-wrap">
+          <input type="range" class="main-slider" id="pvp-slider"
+            min="7000" max="14000" value="9900" step="100"
+            oninput="recalc()" style="--pct: 40%">
+        </div>
+        <div class="slider-ends"><span>$7.000</span><span>$14.000</span></div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Inversión</div>
+          <div class="result-value" id="r-inversion">$1.200.000</div>
+          <div class="result-sub">sin envío</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Facturación</div>
+          <div class="result-value" id="r-facturacion">$1.980.000</div>
+          <div class="result-sub">vendiendo todo</div>
+        </div>
+        <div class="result-card main-result">
+          <div class="result-label">Ganancia neta</div>
+          <div class="result-value" id="r-ganancia">$780.000</div>
+          <div class="result-sub" id="r-margen">Margen 39%</div>
+        </div>
+      </div>
+
+      <div class="breakdown">
+        <div class="breakdown-row">
+          <span class="breakdown-label">Costo por bolsa</span>
+          <span class="val-neutral" id="b-costo">$6.000</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Precio de venta</span>
+          <span class="val-neutral" id="b-pvp">$9.900</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Ganancia por bolsa</span>
+          <span class="val-pos" id="b-ganbol">+ $3.900</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Unidades del pedido</span>
+          <span class="val-neutral" id="b-cant">200 unidades</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Ganancia total</span>
+          <span class="val-featured" id="b-total">+ $780.000</span>
+        </div>
+      </div>
+
+      <div class="shipping-note" id="shipping-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span id="shipping-text">Con medio pallet el envío tiene un <strong>25% de descuento</strong>. Cada bolsa rinde hasta 7 macetas medianas.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPONENTES ── -->
+  <div class="section-eyebrow">8 ingredientes seleccionados</div>
+
+  <div class="components-grid">
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Corteza de pino</div><div class="comp-desc">Aireación estructural y drenaje rápido</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Perlita</div><div class="comp-desc">Porosidad y ligereza, evita compactación</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Carbón vegetal</div><div class="comp-desc">Purificación, absorción de toxinas y pH estable</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Musgo sphagnum premium</div><div class="comp-desc">Retención de humedad óptima y vitalidad radicular</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Piedra pómez</div><div class="comp-desc">Estructura porosa que evita compactación a largo plazo</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Vermiculita</div><div class="comp-desc">Retención de nutrientes y regulación hídrica</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Humus de lombriz</div><div class="comp-desc">Nutrición orgánica y microbioma activo</div></div></div>
+    <div class="component-item"><div class="comp-diamond"></div><div><div class="comp-name">Turba seleccionada</div><div class="comp-desc">pH calibrado 5.5–6.5, ideal para aráceas</div></div></div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="cta-block">
+    <div class="cta-eyebrow">¿Listo para empezar?</div>
+    <div class="cta-headline">Sumá Entre Verde<br>a <em>tu negocio</em></div>
+    <div class="cta-sub">Únicos en Argentina · Calidad premium · Pensado para coleccionistas y viveros</div>
+    <div class="cta-buttons">
+      <a class="cta-btn primary" href="https://wa.me/5493436218007?text=Hola!%20me%20interesa%20el%20programa%20mayorista%20de%20Entre%20Verde" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp · 343 621 8007
+      </a>
+      <a class="cta-btn secondary" href="https://instagram.com/entreverde.ar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @entreverde.ar
+      </a>
+    </div>
+    <div class="cta-url">www.entreverde.com.ar</div>
+  </div>
+
+  <div class="footer">
+    Entre Verde · Aroid Mix Premium · Únicos en Argentina · 2026
+  </div>
+
+</div>
+
+<script>
+  var palletMode = 'medio';
+
+  function setPallet(tipo) {
+    palletMode = tipo;
+    document.getElementById('opt-medio').classList.toggle('active', tipo === 'medio');
+    document.getElementById('opt-completo').classList.toggle('active', tipo === 'completo');
+    recalc();
+  }
+
+  function fmtARS(n) {
+    return '$' + Math.round(n).toLocaleString('es-AR');
+  }
+
+  function recalc() {
+    var slider = document.getElementById('pvp-slider');
+    var pvp = parseInt(slider.value);
+    var min = parseInt(slider.min);
+    var max = parseInt(slider.max);
+    var pct = ((pvp - min) / (max - min) * 100).toFixed(1) + '%';
+    slider.style.setProperty('--pct', pct);
+
+    var costo = palletMode === 'medio' ? 6000 : 5500;
+    var cant  = palletMode === 'medio' ? 200  : 400;
+    var descEnvio = palletMode === 'medio' ? '25%' : '50%';
+
+    var inversion   = costo * cant;
+    var facturacion = pvp * cant;
+    var ganancia    = facturacion - inversion;
+    var margen      = Math.round(ganancia / facturacion * 100);
+    var ganbol      = pvp - costo;
+
+    document.getElementById('pvp-display').innerHTML   = fmtARS(pvp) + ' <span>/ bolsa</span>';
+    document.getElementById('r-inversion').textContent  = fmtARS(inversion);
+    document.getElementById('r-facturacion').textContent = fmtARS(facturacion);
+    document.getElementById('r-ganancia').textContent   = fmtARS(ganancia);
+    document.getElementById('r-margen').textContent     = 'Margen ' + margen + '%';
+    document.getElementById('b-costo').textContent      = fmtARS(costo);
+    document.getElementById('b-pvp').textContent        = fmtARS(pvp);
+    document.getElementById('b-ganbol').textContent     = '+ ' + fmtARS(ganbol);
+    document.getElementById('b-cant').textContent       = cant + ' unidades';
+    document.getElementById('b-total').textContent      = '+ ' + fmtARS(ganancia);
+
+    var palletNombre = palletMode === 'medio' ? 'medio pallet' : 'pallet completo';
+    document.getElementById('shipping-text').innerHTML =
+      'Con ' + palletNombre + ' el envío tiene un <strong>' + descEnvio + ' de descuento</strong>. Cada bolsa rinde hasta 7 macetas medianas.';
+  }
+
+  recalc();
+</script>
+</body>
+</html>
