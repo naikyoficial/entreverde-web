@@ -980,10 +980,10 @@ body.is-loading .h1-inner {
 .faq-section {
   padding: var(--section-gap) 0;
   background:
-    radial-gradient(ellipse 65% 40% at 22% -5%, rgba(228, 208, 156, 0.11) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 55% at 0% 92%, rgba(45, 92, 78, 0.36) 0%, transparent 58%),
-    radial-gradient(ellipse 55% 50% at 100% 40%, rgba(45, 92, 78, 0.26) 0%, transparent 60%),
-    linear-gradient(180deg, var(--tone-b) 0%, var(--tone-b-2) 50%, var(--tone-b) 100%);
+    radial-gradient(ellipse 65% 40% at 22% -5%, rgba(228, 208, 156, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 55% at 0% 92%, rgba(45, 92, 78, 0.3) 0%, transparent 58%),
+    radial-gradient(ellipse at center, transparent 55%, rgba(4, 10, 8, 0.55) 100%),
+    linear-gradient(180deg, var(--tone-a-2) 0%, var(--tone-a) 50%, var(--tone-a-2) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1087,9 +1087,10 @@ body.is-loading .h1-inner {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 55% at 15% 85%, rgba(45, 92, 78, 0.34) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 55% at 90% 20%, rgba(228, 208, 156, 0.10) 0%, transparent 55%),
-    linear-gradient(180deg, var(--tone-b) 0%, var(--tone-b-2) 60%, var(--tone-b) 100%);
+    radial-gradient(ellipse 80% 65% at 50% 20%, rgba(228, 208, 156, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 15% 85%, rgba(45, 92, 78, 0.38) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(45, 92, 78, 0.28) 0%, transparent 60%),
+    linear-gradient(165deg, var(--tone-b-2) 0%, #1c3f36 55%, var(--tone-b) 100%);
 }
 
 .cta-bg-glow {
@@ -1097,7 +1098,7 @@ body.is-loading .h1-inner {
   top: -200px; left: 50%;
   transform: translateX(-50%);
   width: 1000px; height: 600px;
-  background: radial-gradient(ellipse, rgba(228, 208, 156, 0.14) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(228, 208, 156, 0.22) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -1532,24 +1533,30 @@ body.is-loading .h1-inner {
   padding: 110px 40px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 60% 55% at 25% 35%, rgba(228, 208, 156, 0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 45% at 80% 75%, rgba(228, 208, 156, 0.09) 0%, transparent 55%),
-    linear-gradient(170deg, var(--tone-c-3) 0%, var(--tone-c) 50%, var(--tone-c-2) 100%);
+    radial-gradient(ellipse 60% 55% at 25% 35%, rgba(255, 246, 218, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 80% 75%, rgba(20, 43, 37, 0.05) 0%, transparent 55%),
+    linear-gradient(170deg, #e8d4a2 0%, #e4d09c 55%, #d9c48c 100%);
 }
 .editorial-break::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(228,208,156,0.42) 28%, rgba(228,208,156,0.42) 72%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(20, 43, 37, 0.35) 28%, rgba(20, 43, 37, 0.35) 72%, transparent 100%);
 }
 .editorial-break::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(228,208,156,0.22) 28%, rgba(228,208,156,0.22) 72%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(20, 43, 37, 0.2) 28%, rgba(20, 43, 37, 0.2) 72%, transparent 100%);
 }
+/* En fondo pastel: textos e iconos pasan a turquesa */
+.editorial-break .editorial-kicker { color: var(--bg); opacity: 1; }
+.editorial-break .editorial-kicker .label-bar { background: var(--bg); }
+.editorial-break .editorial-statement { color: var(--bg); }
+.editorial-break .editorial-statement em { color: #1a4535; }
+.editorial-break .editorial-ornament { color: var(--bg); opacity: 0.5; }
 .editorial-inner {
   max-width: 920px;
   margin: 0 auto;
@@ -1601,31 +1608,33 @@ body.is-loading .h1-inner {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 100% at 50% 50%, rgba(228, 208, 156, 0.12) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 100% at 15% 50%, rgba(228, 208, 156, 0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 100% at 85% 50%, rgba(228, 208, 156, 0.06) 0%, transparent 55%),
-    linear-gradient(180deg, var(--tone-c-3) 0%, #2a271d 50%, var(--tone-c-3) 100%);
+    radial-gradient(ellipse 70% 100% at 50% 50%, rgba(255, 246, 218, 0.4) 0%, transparent 65%),
+    linear-gradient(180deg, #d9c48c 0%, #e4d09c 50%, #d9c48c 100%);
 }
 .stats-section::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(228,208,156,0.28) 30%, rgba(228,208,156,0.28) 70%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(20, 43, 37, 0.3) 30%, rgba(20, 43, 37, 0.3) 70%, transparent 100%);
 }
 .stats-section::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(228,208,156,0.18) 30%, rgba(228,208,156,0.18) 70%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(20, 43, 37, 0.2) 30%, rgba(20, 43, 37, 0.2) 70%, transparent 100%);
 }
+/* En fondo pastel: numeros y labels pasan a turquesa */
+.stats-section .stat-num { color: var(--bg); }
+.stats-section .stat-num-static { color: var(--bg); }
+.stats-section .stat-label { color: var(--bg); opacity: 0.75; }
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  border-top: 1px solid rgba(228, 208, 156, 0.22);
-  border-bottom: 1px solid rgba(228, 208, 156, 0.22);
+  border-top: 1px solid rgba(20, 43, 37, 0.22);
+  border-bottom: 1px solid rgba(20, 43, 37, 0.22);
   padding: 44px 0;
 }
 .stat {
@@ -1640,7 +1649,7 @@ body.is-loading .h1-inner {
   transform: translateY(-50%);
   width: 1px;
   height: 56px;
-  background: linear-gradient(to bottom, transparent, rgba(228, 208, 156, 0.28), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(20, 43, 37, 0.28), transparent);
 }
 .stat-num {
   display: block;
