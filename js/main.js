@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .from('.h1-line:last-child .h1-inner',  { yPercent: 110, duration: 1.15 }, 0.26)
         .to('.hero-sub',      { y: 0, opacity: 1, duration: 0.9 }, 0.46)
         .to('.hero-actions',  { y: 0, opacity: 1, duration: 0.7 }, 0.6)
-        .to('.formula-badge', { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
+        .to('.wa-float', { scale: 1, opacity: 1, duration: 1.2, ease: 'back.out(1.4)' }, 0.5);
     } catch (_) {
       showRevealElements();
     }
