@@ -452,6 +452,88 @@ body::before {
   letter-spacing: 0;
 }
 
+/* Input numerico de cantidad */
+.qty-input-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  background: rgba(228, 208, 156, 0.06);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  padding: 6px 12px 6px 14px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.qty-input-wrap:focus-within {
+  border-color: var(--green);
+  background: rgba(228, 208, 156, 0.1);
+}
+.qty-input-wrap input {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--green);
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 82px;
+  text-align: right;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.qty-input-wrap input::-webkit-outer-spin-button,
+.qty-input-wrap input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.qty-input-unit {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+/* Badge del tier detectado */
+.tier-badge {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: rgba(228, 208, 156, 0.06);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+}
+.tb-left, .tb-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tb-right { text-align: right; }
+.tb-label, .tb-unit {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+}
+.tb-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.tb-price {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
 .slider-track-wrap { position: relative; margin-bottom: 6px; }
 
 input[type="range"].main-slider {
@@ -777,13 +859,17 @@ input[type="range"].main-slider::-moz-range-thumb {
   .results-grid { grid-template-columns: 1fr 1fr; }
   .results-grid .result-card:last-child { grid-column: span 2; }
   .components-grid { grid-template-columns: 1fr; }
-  .toggle-wrap { grid-template-columns: 1fr; }
   .calc-body { padding: 1.5rem 1.25rem; }
   .calc-header { padding: 1.25rem 1.5rem; }
   .calc-header-text h2 { font-size: 19px; }
   .cta-headline { font-size: 26px; }
   .cta-block { padding: 2.25rem 1.5rem; }
   .slider-value { font-size: 26px; }
+  .slider-top { flex-wrap: wrap; }
+  .qty-input-wrap input { font-size: 22px; width: 68px; }
+  .tier-badge { padding: 12px 14px; gap: 10px; }
+  .tb-name { font-size: 16px; }
+  .tb-price { font-size: 19px; }
 }
 </style>
 </head>
@@ -854,7 +940,7 @@ input[type="range"].main-slider::-moz-range-thumb {
     </div>
 
     <div class="price-card">
-      <div class="price-tier">Medio pallet</div>
+      <div class="price-tier">Mayorista</div>
       <div class="price-qty">100 a 399 bolsas</div>
       <div class="price-amount">$6.000</div>
       <div class="price-unit">por unidad</div>
@@ -897,21 +983,30 @@ input[type="range"].main-slider::-moz-range-thumb {
     </div>
 
     <div class="calc-body">
-      <div class="toggle-wrap">
-        <div class="toggle-opt" id="opt-inicial" onclick="setPallet('inicial')">
-          <div class="toggle-opt-label">Pedido inicial</div>
-          <div class="toggle-opt-qty">50 u.</div>
-          <div class="toggle-opt-price">$6.200 / bolsa</div>
+      <div class="slider-section">
+        <div class="slider-top">
+          <span class="slider-label">¿Cuántas bolsas querés comprar?</span>
+          <div class="qty-input-wrap">
+            <input type="number" id="qty-input" min="50" max="1000" step="1" value="200" aria-label="Cantidad de bolsas">
+            <span class="qty-input-unit">bolsas</span>
+          </div>
         </div>
-        <div class="toggle-opt active" id="opt-medio" onclick="setPallet('medio')">
-          <div class="toggle-opt-label">Medio pallet</div>
-          <div class="toggle-opt-qty">200 u.</div>
-          <div class="toggle-opt-price">$6.000 / bolsa</div>
+        <div class="slider-track-wrap">
+          <input type="range" class="main-slider" id="qty-slider"
+            min="50" max="800" value="200" step="1"
+            oninput="onQtyChange('slider')" style="--pct: 25%">
         </div>
-        <div class="toggle-opt" id="opt-completo" onclick="setPallet('completo')">
-          <div class="toggle-opt-label">Pallet completo</div>
-          <div class="toggle-opt-qty">400 u.</div>
-          <div class="toggle-opt-price">$5.500 / bolsa</div>
+        <div class="slider-ends"><span>50</span><span>800+</span></div>
+
+        <div class="tier-badge" id="tier-badge">
+          <div class="tb-left">
+            <span class="tb-label">Tier detectado</span>
+            <span class="tb-name" id="tb-name">Mayorista</span>
+          </div>
+          <div class="tb-right">
+            <span class="tb-price" id="tb-price">$6.000</span>
+            <span class="tb-unit">por bolsa</span>
+          </div>
         </div>
       </div>
 
@@ -1015,45 +1110,59 @@ input[type="range"].main-slider::-moz-range-thumb {
 </div>
 
 <script>
-  var TIERS = {
-    inicial:  { costo: 6200, cant: 50,  desc: null,   nombre: 'un pedido inicial' },
-    medio:    { costo: 6000, cant: 200, desc: '25%',  nombre: 'medio pallet' },
-    completo: { costo: 5500, cant: 400, desc: '50%',  nombre: 'pallet completo' }
-  };
-  var palletMode = 'medio';
-  var TIER_IDS = ['inicial', 'medio', 'completo'];
+  /* Detecta el tier segun cantidad de bolsas */
+  function getTier(qty) {
+    if (qty >= 400) return { name: 'Pallet completo', costo: 5500, desc: '50%', nombre: 'pallet completo' };
+    if (qty >= 100) return { name: 'Mayorista',       costo: 6000, desc: '25%', nombre: 'una compra mayorista' };
+    return                { name: 'Pedido inicial',  costo: 6200, desc: null,  nombre: 'un pedido inicial' };
+  }
 
-  function setPallet(tipo) {
-    palletMode = tipo;
-    TIER_IDS.forEach(function (id) {
-      document.getElementById('opt-' + id).classList.toggle('active', tipo === id);
-    });
+  var QTY_MIN = 50;
+  var QTY_MAX = 800; // slider max; el input permite hasta 1000
+  var qtyInput  = document.getElementById('qty-input');
+  var qtySlider = document.getElementById('qty-slider');
+  var pvpSlider = document.getElementById('pvp-slider');
+
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+  function fmtARS(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
+
+  function onQtyChange(source) {
+    var qty;
+    if (source === 'slider') {
+      qty = parseInt(qtySlider.value, 10);
+      qtyInput.value = qty;
+    } else {
+      qty = parseInt(qtyInput.value, 10);
+      if (isNaN(qty)) qty = QTY_MIN;
+      qty = clamp(qty, QTY_MIN, 1000);
+      qtyInput.value = qty;
+      qtySlider.value = clamp(qty, QTY_MIN, QTY_MAX);
+    }
+    var pct = ((clamp(qty, QTY_MIN, QTY_MAX) - QTY_MIN) / (QTY_MAX - QTY_MIN) * 100).toFixed(1) + '%';
+    qtySlider.style.setProperty('--pct', pct);
     recalc();
   }
 
-  function fmtARS(n) {
-    return '$' + Math.round(n).toLocaleString('es-AR');
-  }
-
   function recalc() {
-    var slider = document.getElementById('pvp-slider');
-    var pvp = parseInt(slider.value);
-    var min = parseInt(slider.min);
-    var max = parseInt(slider.max);
-    var pct = ((pvp - min) / (max - min) * 100).toFixed(1) + '%';
-    slider.style.setProperty('--pct', pct);
+    var qty = parseInt(qtyInput.value, 10) || QTY_MIN;
+    var pvp = parseInt(pvpSlider.value, 10);
+    var pMin = parseInt(pvpSlider.min);
+    var pMax = parseInt(pvpSlider.max);
+    var ppct = ((pvp - pMin) / (pMax - pMin) * 100).toFixed(1) + '%';
+    pvpSlider.style.setProperty('--pct', ppct);
 
-    var t = TIERS[palletMode];
+    var t = getTier(qty);
     var costo = t.costo;
-    var cant  = t.cant;
 
-    var inversion   = costo * cant;
-    var facturacion = pvp * cant;
+    var inversion   = costo * qty;
+    var facturacion = pvp * qty;
     var ganancia    = facturacion - inversion;
-    var margen      = Math.round(ganancia / facturacion * 100);
+    var margen      = facturacion > 0 ? Math.round(ganancia / facturacion * 100) : 0;
     var ganbol      = pvp - costo;
 
-    document.getElementById('pvp-display').innerHTML   = fmtARS(pvp) + ' <span>/ bolsa</span>';
+    document.getElementById('pvp-display').innerHTML    = fmtARS(pvp) + ' <span>/ bolsa</span>';
+    document.getElementById('tb-name').textContent      = t.name;
+    document.getElementById('tb-price').textContent     = fmtARS(costo);
     document.getElementById('r-inversion').textContent  = fmtARS(inversion);
     document.getElementById('r-facturacion').textContent = fmtARS(facturacion);
     document.getElementById('r-ganancia').textContent   = fmtARS(ganancia);
@@ -1061,7 +1170,7 @@ input[type="range"].main-slider::-moz-range-thumb {
     document.getElementById('b-costo').textContent      = fmtARS(costo);
     document.getElementById('b-pvp').textContent        = fmtARS(pvp);
     document.getElementById('b-ganbol').textContent     = '+ ' + fmtARS(ganbol);
-    document.getElementById('b-cant').textContent       = cant + ' unidades';
+    document.getElementById('b-cant').textContent       = qty + ' unidades';
     document.getElementById('b-total').textContent      = '+ ' + fmtARS(ganancia);
 
     var shipMsg = t.desc
@@ -1069,6 +1178,9 @@ input[type="range"].main-slider::-moz-range-thumb {
       : 'Con ' + t.nombre + ' el envío es estándar. Cada bolsa rinde hasta 7 macetas medianas.';
     document.getElementById('shipping-text').innerHTML = shipMsg;
   }
+
+  qtyInput.addEventListener('input', function () { onQtyChange('input'); });
+  qtyInput.addEventListener('blur', function () { onQtyChange('input'); });
 
   recalc();
 </script>
