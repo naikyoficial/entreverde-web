@@ -218,8 +218,8 @@ body::before {
 /* ── PRICE CARDS ── */
 .price-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-bottom: 1rem;
 }
 
@@ -299,6 +299,7 @@ body::before {
   color: var(--positive);
   font-weight: 500;
 }
+.price-shipping.neutral { color: var(--text-3); font-weight: 400; }
 .price-shipping svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 .price-footnote {
@@ -369,7 +370,7 @@ body::before {
 /* Toggle */
 .toggle-wrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 2rem;
 }
@@ -842,8 +843,19 @@ input[type="range"].main-slider::-moz-range-thumb {
 
   <div class="price-grid">
     <div class="price-card">
+      <div class="price-tier">Pedido inicial</div>
+      <div class="price-qty">50 a 99 bolsas</div>
+      <div class="price-amount">$6.200</div>
+      <div class="price-unit">por unidad</div>
+      <div class="price-shipping neutral">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2" ry="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        Envío estándar
+      </div>
+    </div>
+
+    <div class="price-card">
       <div class="price-tier">Medio pallet</div>
-      <div class="price-qty">200 bolsas</div>
+      <div class="price-qty">100 a 399 bolsas</div>
       <div class="price-amount">$6.000</div>
       <div class="price-unit">por unidad</div>
       <div class="price-shipping">
@@ -886,6 +898,11 @@ input[type="range"].main-slider::-moz-range-thumb {
 
     <div class="calc-body">
       <div class="toggle-wrap">
+        <div class="toggle-opt" id="opt-inicial" onclick="setPallet('inicial')">
+          <div class="toggle-opt-label">Pedido inicial</div>
+          <div class="toggle-opt-qty">50 u.</div>
+          <div class="toggle-opt-price">$6.200 / bolsa</div>
+        </div>
         <div class="toggle-opt active" id="opt-medio" onclick="setPallet('medio')">
           <div class="toggle-opt-label">Medio pallet</div>
           <div class="toggle-opt-qty">200 u.</div>
@@ -998,12 +1015,19 @@ input[type="range"].main-slider::-moz-range-thumb {
 </div>
 
 <script>
+  var TIERS = {
+    inicial:  { costo: 6200, cant: 50,  desc: null,   nombre: 'un pedido inicial' },
+    medio:    { costo: 6000, cant: 200, desc: '25%',  nombre: 'medio pallet' },
+    completo: { costo: 5500, cant: 400, desc: '50%',  nombre: 'pallet completo' }
+  };
   var palletMode = 'medio';
+  var TIER_IDS = ['inicial', 'medio', 'completo'];
 
   function setPallet(tipo) {
     palletMode = tipo;
-    document.getElementById('opt-medio').classList.toggle('active', tipo === 'medio');
-    document.getElementById('opt-completo').classList.toggle('active', tipo === 'completo');
+    TIER_IDS.forEach(function (id) {
+      document.getElementById('opt-' + id).classList.toggle('active', tipo === id);
+    });
     recalc();
   }
 
@@ -1019,9 +1043,9 @@ input[type="range"].main-slider::-moz-range-thumb {
     var pct = ((pvp - min) / (max - min) * 100).toFixed(1) + '%';
     slider.style.setProperty('--pct', pct);
 
-    var costo = palletMode === 'medio' ? 6000 : 5500;
-    var cant  = palletMode === 'medio' ? 200  : 400;
-    var descEnvio = palletMode === 'medio' ? '25%' : '50%';
+    var t = TIERS[palletMode];
+    var costo = t.costo;
+    var cant  = t.cant;
 
     var inversion   = costo * cant;
     var facturacion = pvp * cant;
@@ -1040,9 +1064,10 @@ input[type="range"].main-slider::-moz-range-thumb {
     document.getElementById('b-cant').textContent       = cant + ' unidades';
     document.getElementById('b-total').textContent      = '+ ' + fmtARS(ganancia);
 
-    var palletNombre = palletMode === 'medio' ? 'medio pallet' : 'pallet completo';
-    document.getElementById('shipping-text').innerHTML =
-      'Con ' + palletNombre + ' el envío tiene un <strong>' + descEnvio + ' de descuento</strong>. Cada bolsa rinde hasta 7 macetas medianas.';
+    var shipMsg = t.desc
+      ? 'Con ' + t.nombre + ' el envío tiene un <strong>' + t.desc + ' de descuento</strong>. Cada bolsa rinde hasta 7 macetas medianas.'
+      : 'Con ' + t.nombre + ' el envío es estándar. Cada bolsa rinde hasta 7 macetas medianas.';
+    document.getElementById('shipping-text').innerHTML = shipMsg;
   }
 
   recalc();
