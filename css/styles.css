@@ -472,6 +472,7 @@ body.is-loading .h1-inner {
   line-height: 1.7;
   max-width: 520px;
 }
+.hero-sub strong { color: var(--text); font-weight: 500; }
 .br-desk { display: block; }
 
 /* Hero actions row — primary buy CTA */
@@ -1160,6 +1161,15 @@ body.is-loading .h1-inner {
   margin-bottom: 20px;
 }
 .cta-brand { color: var(--green); }
+.cta-lede {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 0 30px;
+}
+.cta-lede strong { color: var(--green); font-weight: 600; }
 .cta-sub {
   font-size: 14px;
   font-weight: 300;
