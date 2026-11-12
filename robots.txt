@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /mayoristas-2026-x7k9m4pq.html
+Disallow: /admin-cercos-x7k9m4pq.html
 
 Sitemap: https://www.entreverde.com.ar/sitemap.xml
