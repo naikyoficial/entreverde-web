@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css?v=78">
-  <link rel="stylesheet" href="../css/tienda-cercos.css?v=2">
+  <link rel="stylesheet" href="../css/tienda-cercos.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -103,10 +103,11 @@
 
       <div class="plant-main">
         <div class="plant-gallery">
-          <div class="plant-hero-img placeholder" style="--pc-color:#8a7540">
+          <div class="plant-hero-img placeholder" id="plant-hero-img" style="--pc-color:#8a7540">
             
             <span class="plant-hero-mark">⫯</span>
           </div>
+          
         </div>
 
         <div class="plant-info">
@@ -185,10 +186,11 @@
         return { conifera: '✦', flor: '❀', baya: '●', herbacea: '⫯', brote: '✶', hoja: '❧' }[cat] || '❧';
       }
       grid.innerHTML = related.map(function (item) {
-        var mediaInner = item.image
-          ? '<img src="../' + item.image + '" alt="' + item.nombre + '" loading="lazy">'
+        var mainImg = (item.images && item.images[0]) || item.image || null;
+        var mediaInner = mainImg
+          ? '<img src="../' + mainImg + '" alt="' + item.nombre + '" loading="lazy">'
           : '<span class="pc-media-mark">' + markFor(item.imgCat) + '</span>';
-        var mediaClass = item.image ? 'pc-media' : 'pc-media placeholder';
+        var mediaClass = mainImg ? 'pc-media' : 'pc-media placeholder';
         return '' +
         '<article class="product-card">' +
         '  <a href="' + item.slug + '.html" class="pc-link">' +
@@ -213,6 +215,23 @@
         '  </div>' +
         '</article>';
       }).join('');
+    });
+
+    // Galeria: cambiar imagen principal al clickear un thumbnail
+    document.addEventListener('DOMContentLoaded', function () {
+      var hero = document.getElementById('plant-hero-img');
+      var thumbs = document.querySelectorAll('.plant-thumb');
+      if (!hero || thumbs.length < 2) return;
+      thumbs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var src = btn.dataset.src;
+          if (!src) return;
+          var img = hero.querySelector('img');
+          if (img) img.src = src;
+          thumbs.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+        });
+      });
     });
   </script>
 </body>

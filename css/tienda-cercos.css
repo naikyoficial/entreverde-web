@@ -918,6 +918,32 @@ body.ev-cart-open { overflow: hidden; }
   line-height: 1;
 }
 
+/* Galeria: thumbnails bajo la imagen principal */
+.plant-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 8px;
+}
+.plant-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background: #1a3028;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.plant-thumb:hover { transform: translateY(-2px); border-color: var(--border-2); }
+.plant-thumb.is-active { border-color: var(--green); }
+.plant-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .plant-info { padding-top: 6px; }
 .plant-info .pi-eyebrow {
   display: inline-block;

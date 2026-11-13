@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css?v=78">
-  <link rel="stylesheet" href="css/tienda-cercos.css?v=2">
+  <link rel="stylesheet" href="css/tienda-cercos.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -390,10 +390,11 @@
         var addBtn = sinStock
           ? '<button type="button" class="pc-add" disabled>Sin stock</button>'
           : '<button type="button" class="pc-add" data-cart-add="' + item.slug + '">Agregar al carrito</button>';
-        var mediaInner = item.image
-          ? '<img src="' + item.image + '" alt="' + item.nombre + ' — cerco vivo" loading="lazy" decoding="async">'
+        var mainImg = (item.images && item.images[0]) || item.image || null;
+        var mediaInner = mainImg
+          ? '<img src="' + mainImg + '" alt="' + item.nombre + ' — cerco vivo" loading="lazy" decoding="async">'
           : '<span class="pc-media-mark">' + markFor(item.imgCat) + '</span>';
-        var mediaClass = item.image ? 'pc-media' : 'pc-media placeholder';
+        var mediaClass = mainImg ? 'pc-media' : 'pc-media placeholder';
         return '' +
           '<article class="product-card ' + (sinStock ? 'sin-stock' : '') + '" data-altura="' + altB + '" data-crecimiento="' + creB + '">' +
           '  <a href="plantas/' + item.slug + '.html" class="pc-link">' +

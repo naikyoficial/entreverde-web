@@ -19,7 +19,11 @@ window.CATALOGO = [
     riego: 'Moderado, tolera sequía una vez establecido',
     cuidados: 'Poda anual para mantener forma. Resistente a heladas y a suelos pobres.',
     imgCat: 'baya', imgColor: '#8a2b2b',
-    image: 'images/plantas/crataegus-fruto-rojo.webp'
+    images: [
+      'images/plantas/crataegus-fruto-rojo.webp',
+      'images/plantas/crataegus-fruto-rojo-2.webp',
+      'images/plantas/crataegus-fruto-rojo-3.webp'
+    ]
   },
   {
     slug: 'eugenia-myrtifolia',
