@@ -140,7 +140,12 @@ window.CATALOGO = [
     usos: 'Cerco floral, cerco ornamental, bordura alta',
     riego: 'Moderado, tolera sequía',
     cuidados: 'Poda post-floración para mantener forma.',
-    imgCat: 'flor', imgColor: '#b03a3a'
+    imgCat: 'flor', imgColor: '#b03a3a',
+    images: [
+      'images/plantas/calistemo.webp',
+      'images/plantas/calistemo-2.webp',
+      'images/plantas/calistemo-3.webp'
+    ]
   },
   {
     slug: 'abelia-grandiflora',
