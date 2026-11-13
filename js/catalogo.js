@@ -218,7 +218,12 @@ window.CATALOGO = [
     usos: 'Cerco bajo, bordura, cubresuelo alto',
     riego: 'Moderado',
     cuidados: 'Muy rústica. Tolera heladas y suelos pobres.',
-    imgCat: 'baya', imgColor: '#a82c2c'
+    imgCat: 'baya', imgColor: '#a82c2c',
+    images: [
+      'images/plantas/cotoneaster-dielsiana.webp',
+      'images/plantas/cotoneaster-dielsiana-2.webp',
+      'images/plantas/cotoneaster-dielsiana-3.webp'
+    ]
   },
   {
     slug: 'laurel-de-flor',
