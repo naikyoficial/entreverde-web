@@ -199,7 +199,11 @@ window.CATALOGO = [
     usos: 'Cerco ornamental, bordura alta',
     riego: 'Moderado, tolera sequía',
     cuidados: 'Poda ligera post-floración.',
-    imgCat: 'flor', imgColor: '#f2eee5'
+    imgCat: 'flor', imgColor: '#f2eee5',
+    images: [
+      'images/plantas/calistemo-blanco.webp',
+      'images/plantas/calistemo-blanco-2.webp'
+    ]
   },
   {
     slug: 'cotoneaster-dielsiana',
