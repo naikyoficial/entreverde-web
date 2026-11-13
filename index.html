@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css?v=78">
-  <link rel="stylesheet" href="css/tienda-cercos.css?v=3">
+  <link rel="stylesheet" href="css/tienda-cercos.css?v=4">
 
   <script type="application/ld+json">
   {
@@ -155,7 +155,8 @@
   </div>
 
   <!-- ══════ HERO · compacto ══════ -->
-  <section class="shop-hero" id="hero">
+  <section class="shop-hero shop-hero-v2" id="hero" style="background-image: url('images/plantas/olea-texanum-verde.webp');">
+    <div class="shop-hero-overlay" aria-hidden="true"></div>
     <div class="shop-hero-inner container">
       <div class="shop-hero-text">
         <span class="shop-breadcrumb">Entre Verde · Tienda</span>
@@ -163,32 +164,43 @@
           Plantas para<br><em>cercos vivos</em>
         </h1>
         <p class="shop-hero-sub">
-          Especies seleccionadas para formar cercos densos, saludables y duraderos.
-          Consultá por disponibilidad y envío a tu zona.
+          Especies seleccionadas para formar cercos densos, saludables
+          y duraderos. Consultá por disponibilidad y envío a tu zona.
         </p>
         <div class="shop-hero-actions">
           <a href="#catalogo" class="shop-cta shop-cta-primary">
             Ver catálogo
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L7 12M7 12L2.5 7.5M7 12L11.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://wa.me/5493436218007?text=Hola!%20quiero%20consultar%20por%20cercos%20vivos" target="_blank" rel="noopener" class="shop-cta shop-cta-ghost">Consultar por WhatsApp</a>
+          <a href="https://wa.me/5493436218007?text=Hola!%20quiero%20consultar%20por%20cercos%20vivos" target="_blank" rel="noopener" class="shop-cta shop-cta-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0012.07 0C5.5 0 .17 5.33.14 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.3-1.65a11.87 11.87 0 005.68 1.45h.01c6.58 0 11.91-5.33 11.94-11.91 0-3.19-1.25-6.17-3.5-8.41z"/></svg>
+            Consultar por WhatsApp
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="shop-hero-stats">
-        <div class="stat-pill">
-          <span class="sp-num">+24</span>
-          <span class="sp-label">Especies<br>disponibles</span>
-        </div>
-        <div class="stat-pill">
-          <span class="sp-num">1-8 m</span>
-          <span class="sp-label">Rango de<br>altura</span>
-        </div>
-        <div class="stat-pill">
-          <span class="sp-num">AR</span>
-          <span class="sp-label">Envío a todo<br>el país</span>
-        </div>
+    <!-- Trust marks horizontales al pie del hero -->
+    <div class="hero-trust-row">
+      <div class="trust-mark">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 24c0-10 6-16 16-16 0 10-6 16-16 16zM8 24c0-6-2-10-6-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Protección</strong><span>natural</span></div>
       </div>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <div class="trust-mark">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C10 4 6 9 6 14c0 3 2 5 4 6-1 2-3 3-3 3h18s-2-1-3-3c2-1 4-3 4-6 0-5-4-10-10-10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 23v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div><strong>Mejora el</strong><span>ambiente</span></div>
+      </div>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <div class="trust-mark">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 16L16 6l11 10v10a2 2 0 01-2 2H7a2 2 0 01-2-2V16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 28v-8h8v8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div><strong>Realza tu</strong><span>espacio</span></div>
+      </div>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <a href="#catalogo" class="trust-mark trust-mark-cta">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 24c0-10 6-16 16-16 0 10-6 16-16 16zM8 24c0-6-2-10-6-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Elegí el cerco vivo ideal</strong><span>para tu jardín →</span></div>
+      </a>
     </div>
 
     <!-- Floating WhatsApp -->
