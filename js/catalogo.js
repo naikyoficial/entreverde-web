@@ -180,7 +180,11 @@ window.CATALOGO = [
     usos: 'Cerco medio, cerco en sombra, floración invernal',
     riego: 'Moderado',
     cuidados: 'Tolera bien la sombra. Poda ligera post-floración.',
-    imgCat: 'hoja', imgColor: '#2a4a38'
+    imgCat: 'hoja', imgColor: '#2a4a38',
+    images: [
+      'images/plantas/laurentino.webp',
+      'images/plantas/laurentino-2.webp'
+    ]
   },
   {
     slug: 'calistemo-blanco',
