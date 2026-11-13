@@ -22,7 +22,8 @@ window.CATALOGO = [
     images: [
       'images/plantas/crataegus-fruto-rojo.webp',
       'images/plantas/crataegus-fruto-rojo-2.webp',
-      'images/plantas/crataegus-fruto-rojo-3.webp'
+      'images/plantas/crataegus-fruto-rojo-3.webp',
+      'images/plantas/crataegus-fruto-rojo-4.webp'
     ]
   },
   {
