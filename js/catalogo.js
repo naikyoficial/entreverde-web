@@ -38,7 +38,11 @@ window.CATALOGO = [
     usos: 'Cerco formal, topiaria, cerco medio',
     riego: 'Regular los primeros años. Luego moderado.',
     cuidados: 'Soporta poda frecuente. Prefiere suelos bien drenados.',
-    imgCat: 'hoja', imgColor: '#2d5a3d'
+    imgCat: 'hoja', imgColor: '#2d5a3d',
+    images: [
+      'images/plantas/eugenia-myrtifolia.webp',
+      'images/plantas/eugenia-myrtifolia-2.webp'
+    ]
   },
   {
     slug: 'olea-texanum-verde',
