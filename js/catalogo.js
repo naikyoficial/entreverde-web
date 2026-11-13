@@ -160,7 +160,12 @@ window.CATALOGO = [
     usos: 'Cerco medio, bordura, jardín de perfumes',
     riego: 'Moderado',
     cuidados: 'Poda ligera al final del invierno.',
-    imgCat: 'flor', imgColor: '#e0d8d0'
+    imgCat: 'flor', imgColor: '#e0d8d0',
+    images: [
+      'images/plantas/abelia-grandiflora.webp',
+      'images/plantas/abelia-grandiflora-2.webp',
+      'images/plantas/abelia-grandiflora-3.webp'
+    ]
   },
   {
     slug: 'laurentino',
