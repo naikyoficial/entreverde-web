@@ -60,7 +60,12 @@ window.CATALOGO = [
     usos: 'Cerco formal, cerco medio, pantalla visual',
     riego: 'Moderado',
     cuidados: 'Tolera poda severa. Muy resistente a enfermedades.',
-    imgCat: 'hoja', imgColor: '#1f4035'
+    imgCat: 'hoja', imgColor: '#1f4035',
+    images: [
+      'images/plantas/olea-texanum-verde.webp',
+      'images/plantas/olea-texanum-verde-2.webp',
+      'images/plantas/olea-texanum-verde-3.webp'
+    ]
   },
   {
     slug: 'cipres-leylandii',
