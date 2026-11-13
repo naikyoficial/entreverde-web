@@ -120,7 +120,12 @@ window.CATALOGO = [
     usos: 'Cerco ornamental, cerco medio, fondo decorativo',
     riego: 'Regular',
     cuidados: 'Poda ligera para estimular nuevos brotes rojos.',
-    imgCat: 'brote', imgColor: '#a84848'
+    imgCat: 'brote', imgColor: '#a84848',
+    images: [
+      'images/plantas/photinia.webp',
+      'images/plantas/photinia-2.webp',
+      'images/plantas/photinia-3.webp'
+    ]
   },
   {
     slug: 'calistemo',
