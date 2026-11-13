@@ -101,7 +101,11 @@ window.CATALOGO = [
     usos: 'Cerco alto, pantalla, propiedad grande',
     riego: 'Moderado',
     cuidados: 'Poda formadora los primeros años.',
-    imgCat: 'conifera', imgColor: '#3d5a28'
+    imgCat: 'conifera', imgColor: '#3d5a28',
+    images: [
+      'images/plantas/cipres-lambertiana.webp',
+      'images/plantas/cipres-lambertiana-2.webp'
+    ]
   },
   {
     slug: 'photinia',
