@@ -80,7 +80,13 @@ window.CATALOGO = [
     usos: 'Cerco alto, pantalla visual, barrera de viento',
     riego: 'Abundante los primeros años, luego moderado',
     cuidados: 'Poda de altura una vez al año para controlar crecimiento.',
-    imgCat: 'conifera', imgColor: '#2b4a3a'
+    imgCat: 'conifera', imgColor: '#2b4a3a',
+    images: [
+      'images/plantas/cipres-leylandii.webp',
+      'images/plantas/cipres-leylandii-2.webp',
+      'images/plantas/cipres-leylandii-3.webp',
+      'images/plantas/cipres-leylandii-4.webp'
+    ]
   },
   {
     slug: 'cipres-lambertiana',
