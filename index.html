@@ -390,12 +390,16 @@
         var addBtn = sinStock
           ? '<button type="button" class="pc-add" disabled>Sin stock</button>'
           : '<button type="button" class="pc-add" data-cart-add="' + item.slug + '">Agregar al carrito</button>';
+        var mediaInner = item.image
+          ? '<img src="' + item.image + '" alt="' + item.nombre + ' — cerco vivo" loading="lazy" decoding="async">'
+          : '<span class="pc-media-mark">' + markFor(item.imgCat) + '</span>';
+        var mediaClass = item.image ? 'pc-media' : 'pc-media placeholder';
         return '' +
           '<article class="product-card ' + (sinStock ? 'sin-stock' : '') + '" data-altura="' + altB + '" data-crecimiento="' + creB + '">' +
           '  <a href="plantas/' + item.slug + '.html" class="pc-link">' +
-          '    <div class="pc-media placeholder" style="--pc-color:' + item.imgColor + '">' +
+          '    <div class="' + mediaClass + '" style="--pc-color:' + item.imgColor + '">' +
           badge +
-          '      <span class="pc-media-mark">' + markFor(item.imgCat) + '</span>' +
+          mediaInner +
           '    </div>' +
           '    <div class="pc-body">' +
           '      <h3 class="pc-name">' + item.nombre + '</h3>' +

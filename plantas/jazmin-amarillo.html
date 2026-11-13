@@ -185,12 +185,16 @@
         return { conifera: '✦', flor: '❀', baya: '●', herbacea: '⫯', brote: '✶', hoja: '❧' }[cat] || '❧';
       }
       grid.innerHTML = related.map(function (item) {
+        var mediaInner = item.image
+          ? '<img src="../' + item.image + '" alt="' + item.nombre + '" loading="lazy">'
+          : '<span class="pc-media-mark">' + markFor(item.imgCat) + '</span>';
+        var mediaClass = item.image ? 'pc-media' : 'pc-media placeholder';
         return '' +
         '<article class="product-card">' +
         '  <a href="' + item.slug + '.html" class="pc-link">' +
-        '    <div class="pc-media placeholder" style="--pc-color:' + item.imgColor + '">' +
+        '    <div class="' + mediaClass + '" style="--pc-color:' + item.imgColor + '">' +
         '      <span class="pc-badge consulta">Consultar</span>' +
-        '      <span class="pc-media-mark">' + markFor(item.imgCat) + '</span>' +
+        '      ' + mediaInner +
         '    </div>' +
         '    <div class="pc-body">' +
         '      <h3 class="pc-name">' + item.nombre + '</h3>' +

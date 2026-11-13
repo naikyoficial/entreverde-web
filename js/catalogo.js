@@ -18,7 +18,8 @@ window.CATALOGO = [
     usos: 'Cerco defensivo, cerco ornamental, borduras',
     riego: 'Moderado, tolera sequía una vez establecido',
     cuidados: 'Poda anual para mantener forma. Resistente a heladas y a suelos pobres.',
-    imgCat: 'baya', imgColor: '#8a2b2b'
+    imgCat: 'baya', imgColor: '#8a2b2b',
+    image: 'images/plantas/crataegus-fruto-rojo.webp'
   },
   {
     slug: 'eugenia-myrtifolia',
