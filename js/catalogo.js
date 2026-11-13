@@ -41,7 +41,9 @@ window.CATALOGO = [
     imgCat: 'hoja', imgColor: '#2d5a3d',
     images: [
       'images/plantas/eugenia-myrtifolia.webp',
-      'images/plantas/eugenia-myrtifolia-2.webp'
+      'images/plantas/eugenia-myrtifolia-2.webp',
+      'images/plantas/eugenia-myrtifolia-3.webp',
+      'images/plantas/eugenia-myrtifolia-4.webp'
     ]
   },
   {
