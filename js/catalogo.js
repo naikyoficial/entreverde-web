@@ -318,7 +318,11 @@ window.CATALOGO = [
     usos: 'Cerco bajo, cubremuro, trepadora',
     riego: 'Moderado',
     cuidados: 'Poda post-floración. Tolera heladas moderadas.',
-    imgCat: 'flor', imgColor: '#e6c84a'
+    imgCat: 'flor', imgColor: '#e6c84a',
+    images: [
+      'images/plantas/jazmin-amarillo.webp',
+      'images/plantas/jazmin-amarillo-2.webp'
+    ]
   },
   {
     slug: 'olea-texanum-aurea',
