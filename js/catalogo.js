@@ -376,6 +376,11 @@ window.CATALOGO = [
     riego: 'Moderado, tolera sequía',
     cuidados: 'Retirar hojas secas de la base. Casi sin mantenimiento.',
     imgCat: 'herbacea', imgColor: '#8a7540',
+    images: [
+      'images/plantas/formio.webp',
+      'images/plantas/formio-2.webp',
+      'images/plantas/formio-3.webp'
+    ],
     stock: true
   },
   {
