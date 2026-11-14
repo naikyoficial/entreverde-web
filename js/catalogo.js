@@ -299,7 +299,11 @@ window.CATALOGO = [
     usos: 'Cerco bajo floral, bordura, jardín costero',
     riego: 'Moderado',
     cuidados: 'Poda ligera para estimular floración continua.',
-    imgCat: 'flor', imgColor: '#8a4aa8'
+    imgCat: 'flor', imgColor: '#8a4aa8',
+    images: [
+      'images/plantas/polygala.webp',
+      'images/plantas/polygala-2.webp'
+    ]
   },
   {
     slug: 'jazmin-amarillo',
