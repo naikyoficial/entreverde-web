@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css?v=78">
-  <link rel="stylesheet" href="css/tienda-cercos.css?v=6">
+  <link rel="stylesheet" href="css/tienda-cercos.css?v=7">
 
   <script type="application/ld+json">
   {
@@ -368,7 +368,7 @@
   </footer>
 
   <script src="js/main.js?v=69" defer></script>
-  <script src="js/catalogo.js?v=1" defer></script>
+  <script src="js/catalogo.js?v=2" defer></script>
   <script src="js/carrito.js?v=1" defer></script>
   <script defer>
     // Render dinámico del catálogo + filtros
@@ -397,23 +397,40 @@
         var creB = growthBucket(item.crecimiento);
         var sinStock = item.stock === false;
         var badge = sinStock
-          ? '<span class="pc-badge sin-stock">Sin stock</span>'
+          ? ''
           : '<span class="pc-badge consulta">Consultar</span>';
         var addBtn = sinStock
-          ? '<button type="button" class="pc-add" disabled>Sin stock</button>'
+          ? '<button type="button" class="pc-add" disabled>Consultar</button>'
           : '<button type="button" class="pc-add" data-cart-add="' + item.slug + '">Agregar al carrito</button>';
-        var mainImg = (item.images && item.images[0]) || item.image || null;
+        var imgs = (item.images && item.images.length) ? item.images : (item.image ? [item.image] : []);
+        var mainImg = imgs[0] || null;
         var mediaInner = mainImg
-          ? '<img src="' + mainImg + '" alt="' + item.nombre + ' — cerco vivo" loading="lazy" decoding="async">'
+          ? '<img src="' + mainImg + '" alt="' + item.nombre + ' — cerco vivo" loading="lazy" decoding="async" data-pc-hero>'
           : '<span class="pc-media-mark">' + markFor(item.imgCat) + '</span>';
         var mediaClass = mainImg ? 'pc-media' : 'pc-media placeholder';
+
+        // Thumbnails (solo si hay mas de 1 foto)
+        var thumbsHtml = '';
+        if (imgs.length > 1) {
+          thumbsHtml = '<div class="pc-thumbs" data-pc-thumbs>' +
+            imgs.map(function (src, i) {
+              return '<button type="button" class="pc-thumb' + (i === 0 ? ' is-active' : '') + '" data-src="' + src + '" aria-label="Foto ' + (i + 1) + '">' +
+                '<img src="' + src + '" alt="" loading="lazy">' +
+                '</button>';
+            }).join('') +
+            '</div>';
+        }
+
         return '' +
           '<article class="product-card ' + (sinStock ? 'sin-stock' : '') + '" data-altura="' + altB + '" data-crecimiento="' + creB + '">' +
-          '  <a href="plantas/' + item.slug + '.html" class="pc-link">' +
+          '  <a href="plantas/' + item.slug + '.html" class="pc-media-link">' +
           '    <div class="' + mediaClass + '" style="--pc-color:' + item.imgColor + '">' +
           badge +
           mediaInner +
           '    </div>' +
+          '  </a>' +
+          thumbsHtml +
+          '  <a href="plantas/' + item.slug + '.html" class="pc-info-link">' +
           '    <div class="pc-body">' +
           '      <h3 class="pc-name">' + item.nombre + '</h3>' +
           '      <p class="pc-latin">' + item.cientifico + '</p>' +
@@ -438,6 +455,23 @@
 
       // Renderizar
       grid.innerHTML = window.CATALOGO.map(cardHTML).join('');
+
+      // Thumbnails: cambiar imagen principal al clickear (sin navegar)
+      grid.querySelectorAll('[data-pc-thumbs]').forEach(function (strip) {
+        var card = strip.closest('.product-card');
+        var heroImg = card.querySelector('[data-pc-hero]');
+        strip.querySelectorAll('.pc-thumb').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var src = btn.dataset.src;
+            if (!src || !heroImg) return;
+            heroImg.src = src;
+            strip.querySelectorAll('.pc-thumb').forEach(function (b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+          });
+        });
+      });
 
       // Filtros
       var state = { altura: 'all', crecimiento: null };

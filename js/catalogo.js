@@ -397,7 +397,6 @@ window.CATALOGO = [
     riego: 'Moderado',
     cuidados: 'Poda de altura una vez al año si se desea controlar.',
     imgCat: 'conifera', imgColor: '#2d5230',
-    stock: false,
     images: [
       'images/plantas/thuja-de-cerco.webp',
       'images/plantas/thuja-de-cerco-2.webp',
@@ -458,7 +457,6 @@ window.CATALOGO = [
     riego: 'Moderado',
     cuidados: 'Media sombra realza el variegado. Poda ligera.',
     imgCat: 'hoja', imgColor: '#b8c498',
-    stock: false,
     images: [
       'images/plantas/olea-texanum-alba.webp'
     ]
