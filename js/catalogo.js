@@ -356,7 +356,11 @@ window.CATALOGO = [
     usos: 'Cerco formal, bordura alta, cerco de larga duración',
     riego: 'Moderado',
     cuidados: 'Prácticamente sin poda. Forma natural compacta.',
-    imgCat: 'conifera', imgColor: '#3a5a3a'
+    imgCat: 'conifera', imgColor: '#3a5a3a',
+    images: [
+      'images/plantas/thuja-dolly.webp',
+      'images/plantas/thuja-dolly-2.webp'
+    ]
   },
   {
     slug: 'formio',
