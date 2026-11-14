@@ -337,7 +337,11 @@ window.CATALOGO = [
     usos: 'Cerco ornamental, acento de color, cerco formal',
     riego: 'Moderado',
     cuidados: 'Mejor exposición solar para color dorado intenso.',
-    imgCat: 'hoja', imgColor: '#c7b142'
+    imgCat: 'hoja', imgColor: '#c7b142',
+    images: [
+      'images/plantas/olea-texanum-aurea.webp',
+      'images/plantas/olea-texanum-aurea-2.webp'
+    ]
   },
   {
     slug: 'crataegus-van-heden',
