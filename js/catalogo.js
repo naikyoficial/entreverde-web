@@ -6,27 +6,6 @@
 
 window.CATALOGO = [
   {
-    slug: 'crataegus-fruto-rojo',
-    nombre: 'Crataegus Fruto Rojo',
-    cientifico: 'Pyracantha coccinea',
-    resumen: 'Cerco defensivo espinoso con frutos rojos brillantes en otoño e invierno.',
-    altura: 'Hasta 3 m',
-    crecimiento: 'Medio',
-    follaje: 'Perenne',
-    exposicion: 'Sol pleno',
-    descripcion: 'El Crataegus Fruto Rojo es ideal para cercos vivos defensivos: sus espinas disuaden el ingreso y sus bellos frutos rojos encienden el jardín durante los meses fríos. Sus flores blancas en primavera atraen polinizadores y las bayas son alimento para aves nativas. Muy resistente, poco exigente, perfecto para quien busca un cerco con carácter y estética todo el año.',
-    usos: 'Cerco defensivo, cerco ornamental, borduras',
-    riego: 'Moderado, tolera sequía una vez establecido',
-    cuidados: 'Poda anual para mantener forma. Resistente a heladas y a suelos pobres.',
-    imgCat: 'baya', imgColor: '#8a2b2b',
-    images: [
-      'images/plantas/crataegus-fruto-rojo.webp',
-      'images/plantas/crataegus-fruto-rojo-2.webp',
-      'images/plantas/crataegus-fruto-rojo-3.webp',
-      'images/plantas/crataegus-fruto-rojo-4.webp'
-    ]
-  },
-  {
     slug: 'eugenia-myrtifolia',
     nombre: 'Eugenia Myrtifolia',
     cientifico: 'Syzygium paniculatum',
@@ -347,16 +326,22 @@ window.CATALOGO = [
     slug: 'crataegus-van-heden',
     nombre: 'Crataegus Van Heden',
     cientifico: 'Pyracantha "Van Heden"',
-    resumen: 'Floración blanca abundante seguida de frutos naranja-rojos.',
+    resumen: 'Cerco defensivo espinoso con frutos rojo-anaranjados abundantes en otoño e invierno.',
     altura: 'Hasta 3 m',
     crecimiento: 'Medio',
     follaje: 'Perenne',
     exposicion: 'Sol pleno',
-    descripcion: 'El Crataegus Van Heden es otra variedad espectacular de pyracantha, con floración blanca abundante en primavera que se transforma en una pared de frutos rojos y anaranjados en otoño. Como todas las pyracanthas es espinoso, excelente para cerco defensivo decorativo.',
-    usos: 'Cerco defensivo, cerco ornamental',
-    riego: 'Moderado',
-    cuidados: 'Poda anual para mantener forma.',
-    imgCat: 'baya', imgColor: '#d64a28'
+    descripcion: 'El Crataegus Van Heden es una variedad espectacular de pyracantha: ideal para cercos vivos defensivos, sus espinas disuaden el ingreso y sus bellos frutos rojo-anaranjados encienden el jardín durante los meses fríos. Floración blanca abundante en primavera que atrae polinizadores, y las bayas son alimento para aves nativas. Muy resistente, poco exigente, perfecto para quien busca un cerco con carácter y estética todo el año.',
+    usos: 'Cerco defensivo, cerco ornamental, borduras',
+    riego: 'Moderado, tolera sequía una vez establecido',
+    cuidados: 'Poda anual para mantener forma. Resistente a heladas y a suelos pobres.',
+    imgCat: 'baya', imgColor: '#d64a28',
+    images: [
+      'images/plantas/crataegus-van-heden.webp',
+      'images/plantas/crataegus-van-heden-2.webp',
+      'images/plantas/crataegus-van-heden-3.webp',
+      'images/plantas/crataegus-van-heden-4.webp'
+    ]
   },
   {
     slug: 'thuja-dolly',
