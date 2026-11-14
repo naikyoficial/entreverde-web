@@ -458,7 +458,10 @@ window.CATALOGO = [
     riego: 'Moderado',
     cuidados: 'Media sombra realza el variegado. Poda ligera.',
     imgCat: 'hoja', imgColor: '#b8c498',
-    stock: false
+    stock: false,
+    images: [
+      'images/plantas/olea-texanum-alba.webp'
+    ]
   }
 ];
 
