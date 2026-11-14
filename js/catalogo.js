@@ -418,6 +418,10 @@ window.CATALOGO = [
     riego: 'Moderado, tolera sequía',
     cuidados: 'Retirar hojas secas de la base. Casi sin mantenimiento.',
     imgCat: 'herbacea', imgColor: '#8a3a28',
+    images: [
+      'images/plantas/formio-rubra.webp',
+      'images/plantas/formio-rubra-2.webp'
+    ],
     stock: true
   },
   {
