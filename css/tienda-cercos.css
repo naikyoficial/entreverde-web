@@ -113,15 +113,15 @@ body:has(.shop-nav.scrolled) .top-strip {
   z-index: 1;
   background:
     linear-gradient(90deg,
-      rgba(10, 24, 18, 0.88) 0%,
-      rgba(10, 24, 18, 0.65) 45%,
-      rgba(10, 24, 18, 0.25) 75%,
-      rgba(10, 24, 18, 0.15) 100%),
+      rgba(10, 24, 18, 0.72) 0%,
+      rgba(10, 24, 18, 0.5) 40%,
+      rgba(10, 24, 18, 0.15) 70%,
+      rgba(10, 24, 18, 0.05) 100%),
     linear-gradient(180deg,
-      rgba(10, 24, 18, 0.5) 0%,
+      rgba(10, 24, 18, 0.35) 0%,
       transparent 20%,
       transparent 75%,
-      rgba(10, 24, 18, 0.7) 100%);
+      rgba(10, 24, 18, 0.55) 100%);
 }
 .shop-hero-v2 .shop-hero-inner {
   position: relative;
