@@ -279,7 +279,12 @@ window.CATALOGO = [
     usos: 'Cerco informal, pantalla visual, jardín naturalista',
     riego: 'Bajo. Muy tolerante a sequía.',
     cuidados: 'Corte anual a baja altura en invierno.',
-    imgCat: 'herbacea', imgColor: '#e8e2cf'
+    imgCat: 'herbacea', imgColor: '#e8e2cf',
+    images: [
+      'images/plantas/pampa-grass-flor-blanca.webp',
+      'images/plantas/pampa-grass-flor-blanca-2.webp',
+      'images/plantas/pampa-grass-flor-blanca-3.webp'
+    ]
   },
   {
     slug: 'polygala',
