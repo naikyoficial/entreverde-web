@@ -438,6 +438,10 @@ window.CATALOGO = [
     riego: 'Bajo. Tolera bien la sequía.',
     cuidados: 'Poda ligera al final del invierno para rejuvenecer.',
     imgCat: 'flor', imgColor: '#7a4aa8',
+    images: [
+      'images/plantas/ruellia.webp',
+      'images/plantas/ruellia-2.webp'
+    ],
     stock: true
   },
   {
