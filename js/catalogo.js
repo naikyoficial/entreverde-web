@@ -259,7 +259,12 @@ window.CATALOGO = [
     usos: 'Cerco bajo, bordura moderna, jardín arquitectónico',
     riego: 'Moderado, tolera sequía',
     cuidados: 'Retirar hojas secas de la base. Casi sin mantenimiento.',
-    imgCat: 'herbacea', imgColor: '#c7b566'
+    imgCat: 'herbacea', imgColor: '#c7b566',
+    images: [
+      'images/plantas/formio-disciplinado-aureo.webp',
+      'images/plantas/formio-disciplinado-aureo-2.webp',
+      'images/plantas/formio-disciplinado-aureo-3.webp'
+    ]
   },
   {
     slug: 'pampa-grass-flor-blanca',
