@@ -238,7 +238,13 @@ window.CATALOGO = [
     usos: 'Cerco alto floral, pantalla visual',
     riego: 'Moderado',
     cuidados: 'Poda formadora en invierno. Hojas tóxicas si se ingieren.',
-    imgCat: 'flor', imgColor: '#d88cae'
+    imgCat: 'flor', imgColor: '#d88cae',
+    images: [
+      'images/plantas/laurel-de-flor.webp',
+      'images/plantas/laurel-de-flor-2.webp',
+      'images/plantas/laurel-de-flor-3.webp',
+      'images/plantas/laurel-de-flor-4.webp'
+    ]
   },
   {
     slug: 'formio-disciplinado-aureo',
