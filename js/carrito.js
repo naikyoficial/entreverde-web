@@ -161,7 +161,7 @@
         '  </div>' +
         '  <div class="ev-cm-qty">' +
         '    <button class="qtyBtn" data-action="dec" aria-label="Menos">−</button>' +
-        '    <span class="qtyNum">' + qty + '</span>' +
+        '    <input type="number" class="qtyNum" value="' + qty + '" min="1" max="9999" aria-label="Cantidad" />' +
         '    <button class="qtyBtn" data-action="inc" aria-label="Más">+</button>' +
         '  </div>' +
         '  <button class="ev-cm-remove" data-action="rm" aria-label="Quitar">' +
@@ -184,6 +184,23 @@
           else if (a === 'rm') window.EVCart.remove(slug);
         });
       });
+      // Input editable manualmente
+      var qtyInput = row.querySelector('input.qtyNum');
+      if (qtyInput) {
+        var applyQty = function () {
+          var val = parseInt(qtyInput.value, 10);
+          if (!val || val < 1) val = 1;
+          if (val > 9999) val = 9999;
+          qtyInput.value = val;
+          window.EVCart.setQty(slug, val);
+        };
+        qtyInput.addEventListener('change', applyQty);
+        qtyInput.addEventListener('blur', applyQty);
+        qtyInput.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Enter') { ev.preventDefault(); qtyInput.blur(); }
+        });
+        qtyInput.addEventListener('click', function (e) { e.target.select(); });
+      }
     });
 
     var total = totalItems(readCart());

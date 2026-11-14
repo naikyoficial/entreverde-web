@@ -965,11 +965,28 @@ body:has(.shop-nav.scrolled) .top-strip {
 }
 .qtyBtn:hover { background: rgba(228,208,156,0.12); color: var(--green); }
 .qtyNum {
-  min-width: 24px;
+  min-width: 36px;
+  max-width: 48px;
   text-align: center;
   font-size: 13px;
   color: var(--text);
   font-weight: 600;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  cursor: text;
+}
+.qtyNum::-webkit-outer-spin-button,
+.qtyNum::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.qtyNum:focus {
+  background: rgba(228, 208, 156, 0.08);
+  border-radius: 3px;
 }
 .ev-cm-remove {
   width: 32px; height: 32px;
@@ -1241,6 +1258,8 @@ body.ev-cart-open { overflow: hidden; }
   overflow: hidden;
   margin-bottom: 32px;
 }
+/* 5a celda (Heladas) ocupa todo el ancho */
+.plant-specs .ps-cell:nth-child(5) { grid-column: 1 / -1; }
 .ps-cell {
   background: #142b25;
   padding: 16px 18px;
