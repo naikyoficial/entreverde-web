@@ -397,7 +397,12 @@ window.CATALOGO = [
     riego: 'Moderado',
     cuidados: 'Poda de altura una vez al año si se desea controlar.',
     imgCat: 'conifera', imgColor: '#2d5230',
-    stock: false
+    stock: false,
+    images: [
+      'images/plantas/thuja-de-cerco.webp',
+      'images/plantas/thuja-de-cerco-2.webp',
+      'images/plantas/thuja-de-cerco-3.webp'
+    ]
   },
   {
     slug: 'formio-rubra',
