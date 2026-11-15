@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Página privada: no indexar -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+
+  <title>Admin · Entre Verde</title>
+
+  <link rel="icon" href="images/favicon.ico?v=3" sizes="any">
+  <link rel="icon" href="images/favicon-192.png?v=3" type="image/png" sizes="192x192">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a1812;
+  --bg-1: #0f2320;
+  --bg-2: #142b25;
+  --bg-card: #152e28;
+  --border: #284339;
+  --border-2: rgba(228, 208, 156, 0.18);
+  --green: #e4d09c;
+  --green-dim: #c9b578;
+  --text: #f4f2ea;
+  --text-2: #aab6af;
+  --text-3: #6d847b;
+  --positive: #7bc294;
+  --negative: #e86c6c;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: var(--green); text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font-family: inherit; font-size: inherit; background: none; border: none; outline: none; color: inherit; }
+
+/* ══════ LOGIN / REGISTER ══════ */
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse 60% 55% at 15% 15%, rgba(45, 92, 78, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 85% 85%, rgba(228, 208, 156, 0.07) 0%, transparent 55%),
+    var(--bg);
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 44px 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+.auth-card h1 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+}
+.auth-card .auth-sub {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.auth-brand {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  padding: 4px 10px;
+  background: rgba(228,208,156,0.08);
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.auth-field {
+  margin-bottom: 16px;
+}
+.auth-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 7px;
+}
+.auth-field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(10, 24, 18, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+}
+.auth-field input:focus {
+  border-color: var(--green);
+  background: rgba(228, 208, 156, 0.05);
+}
+.auth-submit {
+  width: 100%;
+  padding: 13px 20px;
+  background: var(--green);
+  color: var(--bg);
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-top: 10px;
+  transition: background 0.2s, transform 0.2s;
+}
+.auth-submit:hover { background: var(--green-dim); transform: translateY(-1px); }
+.auth-switch {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.auth-switch button {
+  color: var(--green);
+  text-decoration: underline;
+  font-size: inherit;
+}
+.auth-error {
+  padding: 10px 14px;
+  background: rgba(232, 108, 108, 0.1);
+  border: 1px solid rgba(232, 108, 108, 0.4);
+  border-radius: 6px;
+  color: var(--negative);
+  font-size: 12.5px;
+  margin-bottom: 16px;
+  display: none;
+}
+.auth-error.show { display: block; }
+.auth-foot {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-3);
+  line-height: 1.6;
+}
+.auth-foot button { font-size: 11px; color: var(--text-3); text-decoration: underline; }
+.auth-foot button:hover { color: var(--negative); }
+
+/* ══════ ADMIN PANEL ══════ */
+.admin-wrap { display: none; min-height: 100vh; }
+.admin-wrap.show { display: block; }
+
+.admin-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 24, 18, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.admin-brand strong {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+.admin-brand span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  padding: 3px 9px;
+  background: rgba(228, 208, 156, 0.08);
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+}
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.admin-logout {
+  padding: 7px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: var(--text-2);
+  transition: border-color 0.2s, color 0.2s;
+}
+.admin-logout:hover { border-color: var(--negative); color: var(--negative); }
+
+.admin-main { padding: 26px 22px 80px; max-width: 1400px; margin: 0 auto; }
+
+.admin-actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.admin-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.admin-title span { font-size: 13px; color: var(--text-3); font-family: var(--font-sans); font-weight: 400; margin-left: 8px; }
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-ghost, .btn-primary, .btn-secondary {
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+.btn-ghost:hover { border-color: var(--border-2); color: var(--text); }
+.btn-primary {
+  background: var(--green);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--green-dim); }
+.btn-secondary {
+  background: rgba(228, 208, 156, 0.08);
+  border: 1px solid var(--border-2);
+  color: var(--green);
+}
+.btn-secondary:hover { background: rgba(228, 208, 156, 0.14); }
+
+/* Search bar */
+.admin-search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.admin-search input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+}
+.admin-search input::placeholder { color: var(--text-3); }
+
+/* Grid de especies */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.sp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+.sp-card:hover { border-color: var(--border-2); }
+.sp-card.sin-stock { opacity: 0.7; }
+.sp-thumb {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--pc-color, #1a3028) 0%, #0f2018 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--font-serif);
+  font-size: 28px;
+  overflow: hidden;
+}
+.sp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sp-thumb-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(10, 24, 18, 0.85);
+  color: var(--green);
+  border: 1px solid var(--border-2);
+}
+.sp-thumb-badge.sin-stock { background: rgba(140, 40, 40, 0.85); color: #fff; border-color: rgba(255,90,90,0.3); }
+.sp-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.sp-body strong {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.sp-body em {
+  font-size: 11px;
+  color: var(--text-3);
+  font-style: italic;
+}
+.sp-meta {
+  font-size: 10.5px;
+  color: var(--text-3);
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+.sp-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.sp-actions button {
+  flex: 1;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+.sp-edit {
+  background: rgba(228, 208, 156, 0.08);
+  color: var(--green);
+  border: 1px solid var(--border-2);
+}
+.sp-edit:hover { background: var(--green); color: var(--bg); }
+.sp-del {
+  background: transparent;
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  flex: 0;
+  padding: 7px 10px;
+}
+.sp-del:hover { color: var(--negative); border-color: rgba(232,108,108,0.4); }
+
+/* ══════ MODAL EDIT ══════ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+.modal-backdrop.show { display: flex; }
+.modal-sheet {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  margin: auto 0;
+}
+.modal-head {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg-1);
+  z-index: 2;
+  border-radius: 14px 14px 0 0;
+}
+.modal-head h2 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+.modal-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-close:hover { color: var(--negative); border-color: rgba(232,108,108,0.4); }
+
+.modal-body { padding: 22px 24px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field.full { grid-column: 1 / -1; }
+.field label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.field input,
+.field textarea,
+.field select {
+  padding: 10px 12px;
+  background: rgba(10, 24, 18, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus { border-color: var(--green); }
+.field textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+.field small { font-size: 11px; color: var(--text-3); }
+
+.field-stock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(10, 24, 18, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.field-stock input { width: auto; margin: 0; }
+.field-stock span { font-size: 12px; color: var(--text); }
+
+/* Foto uploader */
+.photo-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 14px;
+  background: rgba(10, 24, 18, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.photo-preview {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #1a3028 0%, #0f2018 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--font-serif);
+  font-size: 32px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.photo-controls { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.photo-controls label {
+  padding: 10px 14px;
+  background: var(--green);
+  color: var(--bg);
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.photo-controls label:hover { background: var(--green-dim); }
+.photo-controls input[type="file"] { display: none; }
+.photo-controls button {
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+.photo-controls button:hover { color: var(--text); border-color: var(--border-2); }
+.photo-controls small { font-size: 11px; color: var(--text-3); line-height: 1.55; }
+
+.modal-foot {
+  padding: 18px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(10, 24, 18, 0.4);
+  border-radius: 0 0 14px 14px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 200;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
+  max-width: 360px;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { border-left-color: var(--negative); }
+.toast.success { border-left-color: var(--positive); }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .admin-top { padding: 12px 16px; }
+  .admin-main { padding: 20px 14px 60px; }
+  .admin-actions-bar { flex-direction: column; align-items: flex-start; }
+  .admin-actions { width: 100%; }
+  .admin-actions .btn-ghost, .admin-actions .btn-primary, .admin-actions .btn-secondary { flex: 1; justify-content: center; }
+  .form-grid { grid-template-columns: 1fr; }
+  .photo-wrap { grid-template-columns: 1fr; }
+  .modal-head { padding: 16px 18px; }
+  .modal-body { padding: 18px; }
+  .modal-foot { padding: 14px 18px; flex-direction: column; }
+  .modal-foot .btn-primary, .modal-foot .btn-ghost { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ AUTH ══════ -->
+<div class="auth-wrap" id="auth-wrap">
+  <div class="auth-card">
+    <span class="auth-brand">Entre Verde · Admin</span>
+
+    <!-- Register -->
+    <div id="view-register">
+      <h1>Crear cuenta</h1>
+      <p class="auth-sub">Esta es la cuenta de administrador. Se guarda únicamente en este dispositivo (localStorage).</p>
+      <div class="auth-error" id="reg-error"></div>
+      <form id="reg-form" autocomplete="off">
+        <div class="auth-field">
+          <label for="reg-user">Usuario</label>
+          <input type="text" id="reg-user" required minlength="3" autocomplete="username" />
+        </div>
+        <div class="auth-field">
+          <label for="reg-pass">Contraseña</label>
+          <input type="password" id="reg-pass" required minlength="6" autocomplete="new-password" />
+        </div>
+        <div class="auth-field">
+          <label for="reg-pass2">Confirmar contraseña</label>
+          <input type="password" id="reg-pass2" required minlength="6" autocomplete="new-password" />
+        </div>
+        <button type="submit" class="auth-submit">Crear cuenta</button>
+      </form>
+      <div class="auth-switch">
+        ¿Ya tenés cuenta? <button type="button" id="go-login">Iniciar sesión</button>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div id="view-login" style="display:none">
+      <h1>Iniciar sesión</h1>
+      <p class="auth-sub">Ingresá con tu cuenta de administrador.</p>
+      <div class="auth-error" id="log-error"></div>
+      <form id="log-form" autocomplete="off">
+        <div class="auth-field">
+          <label for="log-user">Usuario</label>
+          <input type="text" id="log-user" required autocomplete="username" />
+        </div>
+        <div class="auth-field">
+          <label for="log-pass">Contraseña</label>
+          <input type="password" id="log-pass" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="auth-submit">Entrar</button>
+      </form>
+      <div class="auth-foot">
+        <button type="button" id="forgot-pass">¿Olvidaste la contraseña? Reiniciar cuenta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ADMIN PANEL ══════ -->
+<div class="admin-wrap" id="admin-wrap">
+  <header class="admin-top">
+    <div class="admin-brand">
+      <strong>Entre Verde</strong>
+      <span>Admin</span>
+    </div>
+    <div class="admin-user">
+      <span id="admin-username"></span>
+      <button class="admin-logout" id="btn-logout">Salir</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-actions-bar">
+      <h1 class="admin-title">Catálogo <span id="count-sp">24 especies</span></h1>
+      <div class="admin-actions">
+        <button class="btn-ghost" id="btn-import">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15V3M8 11l4 4 4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          Importar
+        </button>
+        <button class="btn-ghost" id="btn-add">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+          Nueva especie
+        </button>
+        <button class="btn-secondary" id="btn-export-photos">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Descargar fotos
+        </button>
+        <button class="btn-primary" id="btn-export">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12M8 11l4 4 4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          Exportar catálogo
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-search">
+      <input type="search" id="search" placeholder="Buscar especie..." />
+      <select id="filter-stock" class="btn-ghost" style="padding:10px 14px; background: var(--bg-1); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px;">
+        <option value="all">Todas</option>
+        <option value="in">En stock</option>
+        <option value="out">Sin stock</option>
+      </select>
+    </div>
+
+    <div class="admin-grid" id="admin-grid"></div>
+  </main>
+</div>
+
+<!-- ══════ MODAL EDIT ══════ -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal-sheet">
+    <header class="modal-head">
+      <h2 id="modal-title">Editar especie</h2>
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+      </button>
+    </header>
+    <div class="modal-body">
+      <form id="edit-form">
+        <div class="form-grid">
+
+          <!-- Foto -->
+          <div class="photo-wrap">
+            <div class="photo-preview" id="photo-preview"><span id="photo-mark">❧</span></div>
+            <div class="photo-controls">
+              <label for="photo-input">📷 Subir foto</label>
+              <input type="file" id="photo-input" accept="image/*" />
+              <button type="button" id="photo-remove">Quitar foto</button>
+              <small>Formato recomendado: WEBP o JPG, 1200×1500px aprox. Se guarda en este navegador. Al exportar se descarga como <code>images/plantas/[slug].jpg</code></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" required />
+          </div>
+          <div class="field">
+            <label for="f-slug">Slug (URL)</label>
+            <input type="text" id="f-slug" required pattern="[a-z0-9-]+" />
+            <small>Sólo minúsculas, números y guiones. Ej: <code>photinia</code></small>
+          </div>
+
+          <div class="field">
+            <label for="f-cientifico">Nombre científico</label>
+            <input type="text" id="f-cientifico" />
+          </div>
+          <div class="field">
+            <label for="f-precio">Precio (texto)</label>
+            <input type="text" id="f-precio" placeholder="Consultar precio" />
+            <small>Lo que aparece en la card. Dejá "Consultar precio" si no querés mostrar monto.</small>
+          </div>
+
+          <div class="field full">
+            <label for="f-resumen">Resumen corto (una línea, aparece en catálogo)</label>
+            <input type="text" id="f-resumen" />
+          </div>
+
+          <div class="field full">
+            <label for="f-descripcion">Descripción larga (página individual)</label>
+            <textarea id="f-descripcion"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="f-altura">Altura</label>
+            <input type="text" id="f-altura" placeholder="Hasta 3 m" />
+          </div>
+          <div class="field">
+            <label for="f-crecimiento">Crecimiento</label>
+            <select id="f-crecimiento">
+              <option value="Lento">Lento</option>
+              <option value="Lento a medio">Lento a medio</option>
+              <option value="Medio">Medio</option>
+              <option value="Rápido">Rápido</option>
+              <option value="Muy rápido">Muy rápido</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-follaje">Follaje</label>
+            <select id="f-follaje">
+              <option>Perenne</option>
+              <option>Semi-perenne</option>
+              <option>Caduco</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-exposicion">Exposición solar</label>
+            <select id="f-exposicion">
+              <option>Sol pleno</option>
+              <option>Sol pleno a media sombra</option>
+              <option>Media sombra</option>
+              <option>Sombra</option>
+              <option>Sol a media sombra</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="f-usos">Usos recomendados</label>
+            <input type="text" id="f-usos" />
+          </div>
+          <div class="field full">
+            <label for="f-riego">Riego</label>
+            <input type="text" id="f-riego" />
+          </div>
+          <div class="field full">
+            <label for="f-cuidados">Cuidados</label>
+            <textarea id="f-cuidados" style="min-height:60px"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="f-imgColor">Color placeholder (si no hay foto)</label>
+            <input type="color" id="f-imgColor" style="height: 42px; padding: 4px;" />
+          </div>
+          <div class="field">
+            <label for="f-imgCat">Icono placeholder</label>
+            <select id="f-imgCat">
+              <option value="hoja">❧ Hoja</option>
+              <option value="flor">❀ Flor</option>
+              <option value="baya">● Baya</option>
+              <option value="conifera">✦ Conífera</option>
+              <option value="herbacea">⫯ Herbácea</option>
+              <option value="brote">✶ Brote</option>
+            </select>
+          </div>
+
+          <label class="field full field-stock">
+            <input type="checkbox" id="f-stock" />
+            <span>En stock (desmarcá si la especie está temporalmente agotada)</span>
+          </label>
+
+        </div>
+      </form>
+    </div>
+    <footer class="modal-foot">
+      <button type="button" class="btn-ghost" id="modal-cancel">Cancelar</button>
+      <button type="button" class="btn-primary" id="modal-save">Guardar cambios</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Input hidden para importar catálogo -->
+<input type="file" id="import-input" accept=".js,.json,text/*" style="display:none" />
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   ENTRE VERDE · ADMIN LOCAL
+   Login con hash SHA-256 + salt en localStorage.
+   Editor de catálogo con export a catalogo.js y descarga de fotos.
+   NO es seguridad real contra alguien con DevTools, es un "gate".
+══════════════════════════════════════════════════════════ */
+
+const K_USER = 'ev_admin_user_v1';
+const K_SESS = 'ev_admin_session_v1';
+const K_CAT  = 'ev_admin_catalog_v1';
+const K_PHOTOS = 'ev_admin_photos_v1';  // {slug: dataURL}
+
+// ═════ UTIL ═════
+async function sha256(text) {
+  const buf = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function randSalt() {
+  const arr = new Uint8Array(16);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function toast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (type || '') + ' show';
+  clearTimeout(window._tt);
+  window._tt = setTimeout(() => t.classList.remove('show'), 3500);
+}
+function slugify(str) {
+  return String(str || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+function markFor(cat) {
+  return { conifera:'✦', flor:'❀', baya:'●', herbacea:'⫯', brote:'✶', hoja:'❧' }[cat] || '❧';
+}
+function readCatLS() {
+  try { return JSON.parse(localStorage.getItem(K_CAT) || 'null'); } catch(e) { return null; }
+}
+function writeCatLS(c) {
+  localStorage.setItem(K_CAT, JSON.stringify(c));
+}
+function readPhotos() {
+  try { return JSON.parse(localStorage.getItem(K_PHOTOS) || '{}'); } catch(e) { return {}; }
+}
+function writePhotos(p) {
+  try { localStorage.setItem(K_PHOTOS, JSON.stringify(p)); return true; }
+  catch (e) {
+    toast('Memoria llena. Exportá y descargá las fotos para liberar espacio.', 'error');
+    return false;
+  }
+}
+
+// ═════ AUTH ═════
+function hasAccount() { return !!localStorage.getItem(K_USER); }
+function isLoggedIn() {
+  const s = localStorage.getItem(K_SESS);
+  if (!s) return false;
+  try { return JSON.parse(s).ok === true; } catch(e) { return false; }
+}
+function showView(view) {
+  document.getElementById('view-register').style.display = view === 'register' ? '' : 'none';
+  document.getElementById('view-login').style.display    = view === 'login'    ? '' : 'none';
+  document.getElementById('auth-wrap').style.display     = view === 'admin'    ? 'none' : '';
+  document.getElementById('admin-wrap').classList.toggle('show', view === 'admin');
+}
+
+async function doRegister(user, pass) {
+  const salt = randSalt();
+  const hash = await sha256(salt + ':' + pass);
+  localStorage.setItem(K_USER, JSON.stringify({ u: user.trim(), s: salt, h: hash }));
+  localStorage.setItem(K_SESS, JSON.stringify({ ok: true, user: user.trim(), t: Date.now() }));
+}
+async function doLogin(user, pass) {
+  const raw = localStorage.getItem(K_USER);
+  if (!raw) return { ok:false, err:'No hay cuenta creada.' };
+  const u = JSON.parse(raw);
+  if (user.trim() !== u.u) return { ok:false, err:'Usuario o contraseña incorrectos.' };
+  const hash = await sha256(u.s + ':' + pass);
+  if (hash !== u.h) return { ok:false, err:'Usuario o contraseña incorrectos.' };
+  localStorage.setItem(K_SESS, JSON.stringify({ ok: true, user: u.u, t: Date.now() }));
+  return { ok:true };
+}
+function doLogout() {
+  localStorage.removeItem(K_SESS);
+  showView(hasAccount() ? 'login' : 'register');
+  document.getElementById('log-user').value = '';
+  document.getElementById('log-pass').value = '';
+}
+function resetAccount() {
+  if (!confirm('Esto borra la cuenta de admin (user y contraseña) pero NO borra el catálogo ni las fotos. ¿Continuar?')) return;
+  localStorage.removeItem(K_USER);
+  localStorage.removeItem(K_SESS);
+  document.getElementById('reg-user').value = '';
+  document.getElementById('reg-pass').value = '';
+  document.getElementById('reg-pass2').value = '';
+  showView('register');
+  toast('Cuenta reiniciada. Creá una nueva.');
+}
+
+// Listeners auth
+document.getElementById('go-login').addEventListener('click', () => showView('login'));
+document.getElementById('forgot-pass').addEventListener('click', resetAccount);
+
+document.getElementById('reg-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('reg-error');
+  err.classList.remove('show');
+  const u = document.getElementById('reg-user').value.trim();
+  const p = document.getElementById('reg-pass').value;
+  const p2 = document.getElementById('reg-pass2').value;
+  if (u.length < 3) { err.textContent = 'El usuario debe tener al menos 3 caracteres.'; err.classList.add('show'); return; }
+  if (p.length < 6) { err.textContent = 'La contraseña debe tener al menos 6 caracteres.'; err.classList.add('show'); return; }
+  if (p !== p2) { err.textContent = 'Las contraseñas no coinciden.'; err.classList.add('show'); return; }
+  await doRegister(u, p);
+  toast('Cuenta creada. Bienvenido.', 'success');
+  initAdmin();
+});
+
+document.getElementById('log-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('log-error');
+  err.classList.remove('show');
+  const u = document.getElementById('log-user').value.trim();
+  const p = document.getElementById('log-pass').value;
+  const res = await doLogin(u, p);
+  if (!res.ok) { err.textContent = res.err; err.classList.add('show'); return; }
+  toast('Bienvenido.', 'success');
+  initAdmin();
+});
+
+document.getElementById('btn-logout').addEventListener('click', doLogout);
+
+// ═════ ADMIN PANEL ═════
+let CATALOG = null;
+let EDITING_SLUG = null;
+let EDITING_NEW = false;
+
+async function loadBaseCatalog() {
+  // Prioriza lo que haya en localStorage (ediciones en curso)
+  const local = readCatLS();
+  if (local && Array.isArray(local)) return local;
+  // Sino, carga el catálogo original del sitio
+  try {
+    const resp = await fetch('js/catalogo.js?' + Date.now());
+    const txt = await resp.text();
+    // Ejecutar en contexto aislado: creamos un objeto window fake
+    const fakeWindow = {};
+    new Function('window', txt)(fakeWindow);
+    return fakeWindow.CATALOGO || [];
+  } catch (e) {
+    toast('No pude cargar el catálogo base. Empiezo vacío.', 'error');
+    return [];
+  }
+}
+
+function initAdmin() {
+  const sess = JSON.parse(localStorage.getItem(K_SESS) || 'null');
+  document.getElementById('admin-username').textContent = sess ? sess.user : '';
+  showView('admin');
+  (async () => {
+    CATALOG = await loadBaseCatalog();
+    renderGrid();
+  })();
+}
+
+// ═════ RENDER grid ═════
+function renderGrid() {
+  const grid = document.getElementById('admin-grid');
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const filter = document.getElementById('filter-stock').value;
+  const photos = readPhotos();
+
+  const filtered = CATALOG.filter(sp => {
+    if (q && !((sp.nombre||'').toLowerCase().includes(q) || (sp.cientifico||'').toLowerCase().includes(q))) return false;
+    if (filter === 'in'  && sp.stock === false) return false;
+    if (filter === 'out' && sp.stock !== false) return false;
+    return true;
+  });
+
+  document.getElementById('count-sp').textContent = filtered.length + ' especie' + (filtered.length !== 1 ? 's' : '');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p style="color:var(--text-3); text-align:center; padding:40px 20px">No se encontraron especies.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map((sp, idx) => {
+    const sinStock = sp.stock === false;
+    const photo = photos[sp.slug];
+    const thumb = photo
+      ? '<img src="' + photo + '" alt="">'
+      : '<span>' + markFor(sp.imgCat || 'hoja') + '</span>';
+    return '' +
+    '<div class="sp-card ' + (sinStock ? 'sin-stock' : '') + '" data-slug="' + sp.slug + '">' +
+    '  <div class="sp-thumb" style="--pc-color:' + (sp.imgColor || '#1a3028') + '">' +
+    '    ' + thumb +
+    '    <span class="sp-thumb-badge ' + (sinStock ? 'sin-stock' : '') + '">' + (sinStock ? 'Sin stock' : 'En stock') + '</span>' +
+    '  </div>' +
+    '  <div class="sp-body">' +
+    '    <strong>' + escapeHTML(sp.nombre) + '</strong>' +
+    '    <em>' + escapeHTML(sp.cientifico || '') + '</em>' +
+    '    <div class="sp-meta">' + escapeHTML(sp.altura || '') + ' · ' + escapeHTML(sp.crecimiento || '') + '</div>' +
+    '    <div class="sp-actions">' +
+    '      <button class="sp-edit" data-action="edit">Editar</button>' +
+    '      <button class="sp-del" data-action="del" title="Eliminar">×</button>' +
+    '    </div>' +
+    '  </div>' +
+    '</div>';
+  }).join('');
+
+  grid.querySelectorAll('.sp-card').forEach(card => {
+    const slug = card.dataset.slug;
+    card.querySelector('[data-action="edit"]').addEventListener('click', () => openEdit(slug));
+    card.querySelector('[data-action="del"]').addEventListener('click', () => deleteSpecies(slug));
+    card.querySelector('.sp-thumb').addEventListener('click', () => openEdit(slug));
+  });
+}
+
+function escapeHTML(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ═════ MODAL EDIT ═════
+function openEdit(slug) {
+  EDITING_NEW = (slug === '__new__');
+  EDITING_SLUG = slug;
+  const sp = EDITING_NEW
+    ? { slug:'', nombre:'', cientifico:'', resumen:'', descripcion:'', altura:'', crecimiento:'Medio', follaje:'Perenne', exposicion:'Sol pleno', usos:'', riego:'', cuidados:'', imgCat:'hoja', imgColor:'#2d5a3d', stock:true, precio:'Consultar precio' }
+    : CATALOG.find(x => x.slug === slug);
+  if (!sp) return;
+
+  document.getElementById('modal-title').textContent = EDITING_NEW ? 'Nueva especie' : 'Editar: ' + sp.nombre;
+  document.getElementById('f-nombre').value = sp.nombre || '';
+  document.getElementById('f-slug').value = sp.slug || '';
+  document.getElementById('f-cientifico').value = sp.cientifico || '';
+  document.getElementById('f-precio').value = sp.precio || 'Consultar precio';
+  document.getElementById('f-resumen').value = sp.resumen || '';
+  document.getElementById('f-descripcion').value = sp.descripcion || '';
+  document.getElementById('f-altura').value = sp.altura || '';
+  document.getElementById('f-crecimiento').value = sp.crecimiento || 'Medio';
+  document.getElementById('f-follaje').value = sp.follaje || 'Perenne';
+  document.getElementById('f-exposicion').value = sp.exposicion || 'Sol pleno';
+  document.getElementById('f-usos').value = sp.usos || '';
+  document.getElementById('f-riego').value = sp.riego || '';
+  document.getElementById('f-cuidados').value = sp.cuidados || '';
+  document.getElementById('f-imgColor').value = sp.imgColor || '#2d5a3d';
+  document.getElementById('f-imgCat').value = sp.imgCat || 'hoja';
+  document.getElementById('f-stock').checked = sp.stock !== false;
+
+  const photos = readPhotos();
+  const existing = photos[sp.slug];
+  const preview = document.getElementById('photo-preview');
+  const mark = document.getElementById('photo-mark');
+  if (existing) {
+    preview.innerHTML = '<img src="' + existing + '" alt="">';
+  } else {
+    preview.innerHTML = '<span id="photo-mark">' + markFor(sp.imgCat || 'hoja') + '</span>';
+  }
+
+  // Auto-slug desde nombre (solo si es nueva o slug vacío)
+  document.getElementById('f-nombre').oninput = function () {
+    if (EDITING_NEW || !document.getElementById('f-slug').value) {
+      document.getElementById('f-slug').value = slugify(this.value);
+    }
+  };
+
+  document.getElementById('modal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+  EDITING_SLUG = null;
+  EDITING_NEW = false;
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-cancel').addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+
+document.getElementById('modal-save').addEventListener('click', () => {
+  const newSlug = slugify(document.getElementById('f-slug').value || document.getElementById('f-nombre').value);
+  if (!newSlug) { toast('Falta nombre o slug.', 'error'); return; }
+  const nombre = document.getElementById('f-nombre').value.trim();
+  if (!nombre) { toast('El nombre es obligatorio.', 'error'); return; }
+
+  // Validar slug único si cambia
+  if (EDITING_NEW || newSlug !== EDITING_SLUG) {
+    if (CATALOG.some(x => x.slug === newSlug)) { toast('Ya existe una especie con ese slug.', 'error'); return; }
+  }
+
+  const data = {
+    slug: newSlug,
+    nombre: nombre,
+    cientifico: document.getElementById('f-cientifico').value.trim(),
+    resumen: document.getElementById('f-resumen').value.trim(),
+    descripcion: document.getElementById('f-descripcion').value.trim(),
+    altura: document.getElementById('f-altura').value.trim(),
+    crecimiento: document.getElementById('f-crecimiento').value,
+    follaje: document.getElementById('f-follaje').value,
+    exposicion: document.getElementById('f-exposicion').value,
+    usos: document.getElementById('f-usos').value.trim(),
+    riego: document.getElementById('f-riego').value.trim(),
+    cuidados: document.getElementById('f-cuidados').value.trim(),
+    imgCat: document.getElementById('f-imgCat').value,
+    imgColor: document.getElementById('f-imgColor').value,
+    stock: document.getElementById('f-stock').checked,
+    precio: document.getElementById('f-precio').value.trim() || 'Consultar precio',
+  };
+
+  if (EDITING_NEW) {
+    CATALOG.push(data);
+    toast('Especie agregada: ' + data.nombre, 'success');
+  } else {
+    const idx = CATALOG.findIndex(x => x.slug === EDITING_SLUG);
+    if (idx >= 0) {
+      // Si cambió el slug, renombrar también la foto
+      if (newSlug !== EDITING_SLUG) {
+        const photos = readPhotos();
+        if (photos[EDITING_SLUG]) {
+          photos[newSlug] = photos[EDITING_SLUG];
+          delete photos[EDITING_SLUG];
+          writePhotos(photos);
+        }
+      }
+      CATALOG[idx] = data;
+      toast('Cambios guardados: ' + data.nombre, 'success');
+    }
+  }
+  writeCatLS(CATALOG);
+  closeModal();
+  renderGrid();
+});
+
+// ═════ Foto upload ═════
+document.getElementById('photo-input').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { toast('Debe ser una imagen.', 'error'); return; }
+  if (file.size > 5 * 1024 * 1024) { toast('La imagen debe pesar menos de 5MB.', 'error'); return; }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    // Reducir dimensiones antes de guardar (max 1200px lado mayor)
+    const img = new Image();
+    img.onload = function () {
+      const maxDim = 1200;
+      const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      const dataURL = canvas.toDataURL('image/jpeg', 0.85);
+
+      const slug = document.getElementById('f-slug').value.trim() || slugify(document.getElementById('f-nombre').value);
+      if (!slug) { toast('Primero ingresá nombre/slug.', 'error'); return; }
+
+      const photos = readPhotos();
+      photos[slug] = dataURL;
+      if (writePhotos(photos)) {
+        document.getElementById('photo-preview').innerHTML = '<img src="' + dataURL + '" alt="">';
+        toast('Foto cargada (' + Math.round(dataURL.length/1024) + ' KB)', 'success');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('photo-remove').addEventListener('click', () => {
+  const slug = document.getElementById('f-slug').value.trim();
+  if (!slug) return;
+  const photos = readPhotos();
+  delete photos[slug];
+  writePhotos(photos);
+  document.getElementById('photo-preview').innerHTML = '<span>' + markFor(document.getElementById('f-imgCat').value) + '</span>';
+  document.getElementById('photo-input').value = '';
+  toast('Foto quitada');
+});
+
+// ═════ Delete especie ═════
+function deleteSpecies(slug) {
+  const sp = CATALOG.find(x => x.slug === slug);
+  if (!sp) return;
+  if (!confirm('¿Eliminar "' + sp.nombre + '" del catálogo? La foto también se borra.')) return;
+  CATALOG = CATALOG.filter(x => x.slug !== slug);
+  writeCatLS(CATALOG);
+  const photos = readPhotos();
+  delete photos[slug];
+  writePhotos(photos);
+  toast('Especie eliminada: ' + sp.nombre);
+  renderGrid();
+}
+
+// ═════ Nueva especie ═════
+document.getElementById('btn-add').addEventListener('click', () => openEdit('__new__'));
+
+// ═════ Search ═════
+document.getElementById('search').addEventListener('input', renderGrid);
+document.getElementById('filter-stock').addEventListener('change', renderGrid);
+
+// ═════ EXPORT catálogo ═════
+document.getElementById('btn-export').addEventListener('click', exportCatalog);
+
+function exportCatalog() {
+  if (!CATALOG || CATALOG.length === 0) { toast('No hay especies para exportar.', 'error'); return; }
+  const header = '/* ══════════════════════════════════════\n' +
+                 '   ENTRE VERDE · Catálogo de Cercos Vivos\n' +
+                 '   Generado desde el panel admin · ' + new Date().toISOString() + '\n' +
+                 '══════════════════════════════════════ */\n\n';
+  const body = 'window.CATALOGO = ' + JSON.stringify(CATALOG, null, 2) + ';\n';
+  const blob = new Blob([header + body], { type: 'application/javascript' });
+  downloadBlob(blob, 'catalogo.js');
+  toast('catalogo.js descargado (' + CATALOG.length + ' especies)', 'success');
+}
+
+function downloadBlob(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 100);
+}
+
+// ═════ Descargar fotos ═════
+document.getElementById('btn-export-photos').addEventListener('click', () => {
+  const photos = readPhotos();
+  const entries = Object.entries(photos);
+  if (entries.length === 0) { toast('No hay fotos cargadas.', 'error'); return; }
+
+  if (entries.length === 1) {
+    // Una sola foto → descarga directa
+    const [slug, dataURL] = entries[0];
+    downloadDataURL(dataURL, slug + '.jpg');
+    toast('Foto descargada: ' + slug + '.jpg', 'success');
+    return;
+  }
+  // Múltiples: descargar una a una con timeout (browsers limitan)
+  if (!confirm('Se van a descargar ' + entries.length + ' fotos individuales. ¿Continuar?\n\nCada una se guarda como <slug>.jpg — subilas al repo en /images/plantas/')) return;
+  entries.forEach(([slug, dataURL], i) => {
+    setTimeout(() => downloadDataURL(dataURL, slug + '.jpg'), i * 350);
+  });
+  toast('Descargando ' + entries.length + ' fotos...', 'success');
+});
+
+function downloadDataURL(dataURL, name) {
+  const a = document.createElement('a');
+  a.href = dataURL;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => a.remove(), 100);
+}
+
+// ═════ IMPORT catálogo ═════
+document.getElementById('btn-import').addEventListener('click', () => document.getElementById('import-input').click());
+document.getElementById('import-input').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      const txt = e.target.result;
+      // Soporta tanto JSON como el formato window.CATALOGO = [...]
+      let data;
+      if (txt.trim().startsWith('[')) {
+        data = JSON.parse(txt);
+      } else {
+        const fakeWindow = {};
+        new Function('window', txt)(fakeWindow);
+        data = fakeWindow.CATALOGO;
+      }
+      if (!Array.isArray(data)) throw new Error('Formato inválido');
+      if (!confirm('¿Reemplazar el catálogo actual con ' + data.length + ' especies importadas? (los cambios actuales se pierden)')) return;
+      CATALOG = data;
+      // Agregar stock=true por defecto
+      CATALOG.forEach(x => { if (x.stock === undefined) x.stock = true; });
+      writeCatLS(CATALOG);
+      renderGrid();
+      toast('Catálogo importado: ' + data.length + ' especies', 'success');
+    } catch (err) {
+      toast('Error al importar: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  this.value = '';
+});
+
+// ═════ INIT ═════
+document.addEventListener('DOMContentLoaded', () => {
+  if (isLoggedIn() && hasAccount()) {
+    initAdmin();
+  } else if (hasAccount()) {
+    showView('login');
+  } else {
+    showView('register');
+  }
+});
+</script>
+</body>
+</html>
